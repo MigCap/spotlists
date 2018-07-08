@@ -17,6 +17,7 @@ html, body {
 button {
   border-radius: 5px;
   cursor: pointer;
+  outline: none;
 }
 
 .App-logo {
