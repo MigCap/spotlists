@@ -132,7 +132,11 @@ class App extends Component {
             {playlistToRender.map(playlist =>
               <Playlist playlist={playlist} />
             )}
-          </div> : <button onClick={() => window.location = 'http://localhost:8888/login' }
+          </div> : <button onClick={() => {
+            window.location = window.location.includes('localhost') 
+              ? 'http://localhost:8888/login' 
+              : 'https://kp-spotlist.herokuapp.com/login' }
+          }
             style={{padding: '1em', 'font-size': '1.5em', 'margin-top': '3em'}}>Sign in with Spotify</button> 
         }
       </div>
