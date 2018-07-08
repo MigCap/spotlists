@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import queryString from 'query-string';
 
-let defaultTextColor = '#fff';
+let defaultTextColor = 'darkslategray';
 let defaultStyle = {
   color: defaultTextColor
 };
@@ -86,7 +86,8 @@ class App extends Component {
   componentDidMount() {
     let parsed = queryString.parse(window.location.search);
     let accessToken = parsed.access_token;
-
+    if (!accessToken)
+      return;
     fetch('https://api.spotify.com/v1/me',{
       headers: {'Authorization': 'Bearer ' + accessToken}
     }).then(response => response.json())
