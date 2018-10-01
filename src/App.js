@@ -179,7 +179,7 @@ class App extends Component {
       <div className="App">
         {this.state.user ? (
           <div className="container">
-            <h1 className="text-success display-4 mb-5">
+            <h1 className="text-success p-2 pb-5">
               {this.state.user.name}
               's Playlists
             </h1>
@@ -194,21 +194,21 @@ class App extends Component {
             </div>
           </div>
         ) : (
-          <div className="container text-center mt-2">
+          <div className="container text-center p-3">
             <div className="container">
-              <h3 className="text-success display-4">
+              <h3 className="text-success">
                 SPOTIFY TOP PLAYLIST'S TRACKS
               </h3>
             </div>
-            <div className="container mt-5 p-4" />
-            <div className="container mt-5 mb-5">
+            
+            <div className="container pt-5">
               <h6>
-                A simple react app which lists your plalist and the total amount
+                A simple react app which lists your playlist and the total amount
                 of hours of them, showing 3 top tracks from each one.
               </h6>
             </div>
             <button
-              className="btn btn-outline-success btn-lg mt-5 px-5"
+              className="btn btn-outline-success btn-sm mt-2 px-5"
               onClick={() => {
                 window.location = window.location.href.includes("localhost")
                   ? "http://localhost:8888/login"
@@ -217,8 +217,8 @@ class App extends Component {
             >
               Sign in with Spotify
             </button>
-            <div className="container mt-4">
-              <p>Connect The App to your Spotify account</p>
+            <div className="container">
+              <p className="p-3">Connect The App to your Spotify account</p>
             </div>
           </div>
         )}
