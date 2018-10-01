@@ -4,7 +4,6 @@ import "./main.css";
 import queryString from "query-string";
 
 let defaultTextColor = "success";
-let secondaryTextColor = "black";
 let defaultStyle = {
   color: defaultTextColor
 };
@@ -30,7 +29,12 @@ class PlaylistCounter extends Component {
     return (
       <div
         className=""
-        style={{ ...defaultStyle, width: "40%", display: "inline-block" }}
+        style={{
+          ...defaultStyle,
+          width: "40%",
+          display: "inline-block",
+          color: "white"
+        }}
       >
         <h6>{this.props.playlists.length} Playlists</h6>
       </div>
@@ -46,7 +50,15 @@ class HoursCounter extends Component {
       return sum + eachSong.duration;
     }, 0);
     return (
-      <div className="" style={{ ...defaultStyle, width: "40%", display: "inline-block" }} >
+      <div
+        className=""
+        style={{
+          ...defaultStyle,
+          width: "40%",
+          display: "inline-block",
+          color: "white"
+        }}
+      >
         <h6>{Math.round(totalDuration / 60)} hours</h6>
       </div>
     );
@@ -56,9 +68,12 @@ class Filter extends Component {
   render() {
     return (
       <div className="container m-b-3">
-        <img />
-        <input className="container form-control form-control-md" type="text" placeholder="Search Playlist or Top Songs" 
-        onKeyUp={event => this.props.onTextChange(event.target.value)} />
+        <input
+          className="container form-control form-control-sm mt-2 round-corner"
+          type="text"
+          placeholder="Search Playlist or Top Songs"
+          onKeyUp={event => this.props.onTextChange(event.target.value)}
+        />
       </div>
     );
   }
@@ -68,29 +83,33 @@ class Playlist extends Component {
   render() {
     let playlist = this.props.playlist;
     return (
-        <div className="card col-12 col-md-6 col-lg-4"
-          style={{
-            display: 'inline-block',
-            width: "40%",
-            color: "rgb(20, 20, 20)",
-            backgroundColor: "rgb(20, 20, 20)"
-          }}>
-          <img className="card-img-top mt-5"
-            src={playlist.imageUrl}
-            style={{ width: "120px" }}
-          />
-          <div className="card-body">
-            <h3 className="card-title text-success">{playlist.name}</h3>
-            <ul className="list-group list-group-flush">
-              {playlist.songs.map(song => (
-                <li className="list-group-item text-success"
-                  style={{ border: "none", backgroundColor: "rgb(20, 20, 20)" }}>
-                  {song.name}
-                </li>
-              ))}
-            </ul>
-          </div>
+      <div
+        className="card col-12 col-md-6 col-lg-4 no-border"
+        style={{
+          display: "inline-block",
+          width: "40%"
+        }}
+      >
+        <img
+          className="card-img-top mt-5"
+          alt=""
+          src={playlist.imageUrl}
+          style={{ width: "120px" }}
+        />
+        <div className="card-body">
+          <h3 className="card-title text-white">{playlist.name}</h3>
+          <ul className="list-group list-group-flush">
+            {playlist.songs.map(song => (
+              <li
+                className="list-group-item"
+                
+              >
+                {song.name}
+              </li>
+            ))}
+          </ul>
         </div>
+      </div>
     );
   }
 }
@@ -153,7 +172,7 @@ class App extends Component {
           playlists: playlists.map(item => {
             return {
               name: item.name,
-              imageUrl: item.images.find(image => image.width == 300).url,
+              imageUrl: item.images.find(image => image.width === 300).url,
               songs: item.trackDatas.slice(0, 3)
             };
           })
@@ -178,15 +197,17 @@ class App extends Component {
     return (
       <div className="App">
         {this.state.user ? (
-          <div className="container">
-            <h1 className="text-success p-2 pb-5">
+          <div className="app-playlists">
+            <h1 className="text-white p-2 pb-5 pt-5">
               {this.state.user.name}
               's Playlists
             </h1>
             <PlaylistCounter playlists={playlistToRender} />
             <HoursCounter playlists={playlistToRender} />
-            
-              <Filter onTextChange={text => this.setState({ filterString: text })} />
+
+            <Filter
+              onTextChange={text => this.setState({ filterString: text })}
+            />
             <div className="row justify-content-around mt-2">
               {playlistToRender.map(playlist => (
                 <Playlist playlist={playlist} />
@@ -194,21 +215,24 @@ class App extends Component {
             </div>
           </div>
         ) : (
-          <div className="container text-center p-3">
-            <div className="container">
-              <h3 className="text-success">
-                SPOTIFY TOP PLAYLIST'S TRACKS
-              </h3>
+          <div className="text-center p-3 app-login">
+            <div className="container logo img-fluid pb-3">
+              <img src="Spotify_Logo_CMYK_Black.png" alt="spotify logo" />
+              <hr />
             </div>
-            
-            <div className="container pt-5">
-              <h6>
-                A simple react app which lists your playlist and the total amount
-                of hours of them, showing 3 top tracks from each one.
+
+            <div className="container">
+              <h2 className="text-success">SPOTIFY TOP PLAYLIST'S TRACKS</h2>
+            </div>
+
+            <div className="container pt-4">
+              <h6 className="bold">
+                A simple react app which lists your playlist and the total
+                amount of hours of them, showing 3 top tracks from each one.
               </h6>
             </div>
             <button
-              className="btn btn-outline-success btn-sm mt-2 px-5"
+              className="btn round-corner btn-success btn-sm mt-2 px-5"
               onClick={() => {
                 window.location = window.location.href.includes("localhost")
                   ? "http://localhost:8888/login"

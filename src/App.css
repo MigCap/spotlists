@@ -1,21 +1,43 @@
 html,
 body {
-  background-color: #141414;
-  margin: 0;
-  padding: 0; }
-
-body {
+  background-color: whitesmoke;
   margin: 0;
   padding: 0; }
 
 .App {
   text-align: center;
-  background-color: #141414;
   width: 100%;
   height: 100%;
   margin: 0;
-  padding: 2em 0em;
-  color: #f0f1f1; }
+  padding: 0em 0em;
+  color: #141414; }
+
+div.app-login {
+  background-color: whitesmoke; }
+
+div.app-playlists {
+  background: linear-gradient(to bottom, #3a453d 0%, #3a453d 8.1%, #3b463f 15.5%, #3c4640 22.5%, #3e4742 29%, #3f4945 35.3%, #414a47 41.2%, #434b4a 47.1%, #444c4c 52.9%, #464e4f 58.8%, #484f51 64.7%, #495053 71%, #4a5155 77.5%, #4b5156 84.5%, #4c5257 91.9%, #4c5257 100%); }
+
+.logo img {
+  max-width: 150px; }
+
+.bold {
+  font-weight: bold; }
+
+button.round-corner {
+  border-radius: 50px;
+  border: none; }
+
+input.round-corner {
+  border-radius: 50px;
+  max-width: 60%; }
+
+div.no-border {
+  border: none;
+  color: whitesmoke;
+  background-color: transparent; }
+  div.no-border div ul li {
+    background-color: transparent; }
 
 /*!
  * Bootstrap v4.1.3 (https://getbootstrap.com/)
