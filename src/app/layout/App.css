@@ -1,8 +1,55 @@
+.img-loading-overlay {
+  background-color: linear-gradient(to bottom, #3a453d 0%, #3a453d 8.1%, #3b463f 15.5%, #3c4640 22.5%, #3e4742 29%, #3f4945 35.3%, #414a47 41.2%, #434b4a 47.1%, #444c4c 52.9%, #464e4f 58.8%, #484f51 64.7%, #495053 71%, #4a5155 77.5%, #4b5156 84.5%, #4c5257 91.9%, #4c5257 100%);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  opacity: .2;
+  position: absolute;
+  border-radius: 5px; }
+
+.img-spinning-circle {
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0; }
+
+.img-spinning-circle:after {
+  content: " ";
+  display: block;
+  width: 46px;
+  height: 46px;
+  margin: 1px;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  border-color: #61dafb transparent #61dafb transparent;
+  animation: lds-dual-ring 1.2s linear infinite; }
+
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+
+* {
+  box-sizing: border-box; }
+
 html,
 body {
-  background-color: whitesmoke;
+  background: linear-gradient(to bottom, #3a453d 0%, #3a453d 8.1%, #3b463f 15.5%, #3c4640 22.5%, #3e4742 29%, #3f4945 35.3%, #414a47 41.2%, #434b4a 47.1%, #444c4c 52.9%, #464e4f 58.8%, #484f51 64.7%, #495053 71%, #4a5155 77.5%, #4b5156 84.5%, #4c5257 91.9%, #4c5257 100%) !important; }
+
+html,
+body {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  background-color: whitesmoke;
+  font-family: sans-serif;
+  height: 100vh !important; }
 
 .App {
   text-align: center;
@@ -16,7 +63,8 @@ div.app-login {
   background-color: whitesmoke; }
 
 div.app-playlists {
-  background: linear-gradient(to bottom, #3a453d 0%, #3a453d 8.1%, #3b463f 15.5%, #3c4640 22.5%, #3e4742 29%, #3f4945 35.3%, #414a47 41.2%, #434b4a 47.1%, #444c4c 52.9%, #464e4f 58.8%, #484f51 64.7%, #495053 71%, #4a5155 77.5%, #4b5156 84.5%, #4c5257 91.9%, #4c5257 100%); }
+  background: linear-gradient(to bottom, #3a453d 0%, #3a453d 8.1%, #3b463f 15.5%, #3c4640 22.5%, #3e4742 29%, #3f4945 35.3%, #414a47 41.2%, #434b4a 47.1%, #444c4c 52.9%, #464e4f 58.8%, #484f51 64.7%, #495053 71%, #4a5155 77.5%, #4b5156 84.5%, #4c5257 91.9%, #4c5257 100%);
+  height: 100%; }
 
 .logo img {
   max-width: 150px; }
@@ -6961,3 +7009,21 @@ a.text-dark:hover, a.text-dark:focus {
   .table .thead-dark th {
     color: inherit;
     border-color: #dee2e6; } }
+
+/* @include media-sm {
+  html {
+    font-size: 0.6rem;
+  }
+}
+
+@include media-md {
+  html {
+    font-size: 1rem;
+  }
+}
+
+@include media-lg {
+  html {
+    font-size: 1rem;
+  }
+} */
