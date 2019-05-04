@@ -1,11 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './App.css';
 
 import Playlisting from '../../components/Dashboard/Playlisting';
 
 class App extends Component {
   render() {
-    return <Playlisting />;
+    return (
+      <Fragment>
+        <Playlisting />
+      </Fragment>
+    );
   }
 }
 
