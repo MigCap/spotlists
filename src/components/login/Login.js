@@ -10,11 +10,11 @@ export default class Login extends Component {
         </div>
 
         <div className="container pt-4">
-          <h4 className="text-success">SPOTIFY PLAYLIST TRACKS</h4>
+          <h4 className="text-white">SPOTIFY PLAYLIST TRACKS</h4>
         </div>
 
         <div className="container mt-4 px-lg-5">
-          <h6 className="text-white px-lg-5">
+          <h6 className="text-muted px-lg-5">
             A simple react app which lists your playlist and the total amount of
             hours of them, showing 3 top tracks from each one.
           </h6>

@@ -90,6 +90,10 @@ class Playlisting extends Component {
       );
   }
 
+  formatString(string) {
+    return string.charAt(0).toUpperCase() + string.toLowerCase().slice(1);
+  }
+
   renderLogin(user, playlists, fetchingUser, fetchingPlaylists) {
     if ((!user || !playlists) && (!fetchingUser || !fetchingPlaylists)) {
       return (
@@ -128,8 +132,8 @@ class Playlisting extends Component {
               </svg>
             </div>
 
-            <h5 className="text-white p-2 pb-3 pt-3 text-uppercase">
-              {user.name}
+            <h5 className="text-white p-2 pb-3 pt-3">
+              {this.formatString(user.name)}
             </h5>
             <div className="d-flex justify-content-center">
               <PlaylistCounter playlists={playlistToRender} />
