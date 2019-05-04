@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
 
-let defaultTextColor = 'success';
-let defaultStyle = {
-  color: defaultTextColor
-};
-
 export default class HoursCounter extends Component {
   render() {
     let allSongs = this.props.playlists.reduce((songs, eachPlaylist) => {
@@ -14,15 +9,11 @@ export default class HoursCounter extends Component {
       return sum + eachSong.duration;
     }, 0);
     return (
-      <div
-        className=""
-        style={{
-          ...defaultStyle,
-          width: '40%',
-          display: 'inline-block',
-          color: 'white'
-        }}>
-        <h6>{Math.round(totalDuration / 60)} hours</h6>
+      <div className="text-success mx-4">
+        <h6 className="font-weight-bolder mb-0">
+          {Math.round(totalDuration / 60)}
+        </h6>
+        <h6 className="text-muted text-uppercase small-font"> hours</h6>
       </div>
     );
   }

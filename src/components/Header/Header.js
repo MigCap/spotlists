@@ -8,7 +8,7 @@ export default class Header extends Component {
       <div className="container">
         <nav className="navbar navbar-expand-lg navbar-fixed-top">
           <a className="navbar-brand text-white" href={href}>
-            SpotList
+            <img className="navbar-logo" src="spt-logo.png" alt="spotify logo" />
           </a>
           <button
             className="navbar-toggler"
@@ -23,12 +23,12 @@ export default class Header extends Component {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ml-auto">
               <li className="nav-item active">
-                <a className="nav-link text-white" href={href}>
+                <a className="nav-link text-success" href={href}>
                   Home <span className="sr-only">(current)</span>
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link text-white" href="/login">
+                <a className="nav-link text-success" href="/login">
                   Logout
                 </a>
               </li>
