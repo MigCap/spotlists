@@ -3,13 +3,13 @@ import React, { Component } from 'react';
 export default class Login extends Component {
   render() {
     return (
-      <div className="text-center p-3 app-login">
+      <div className="text-center p-3 app-login pt-md-5">
         <div className="container logo img-fluid pb-3">
           <img src="Spotify_Logo_CMYK_Black.png" alt="spotify logo" />
           <hr />
         </div>
 
-        <div className="container">
+        <div className="container pt-3">
           <h2 className="text-success">SPOTIFY TOP PLAYLIST'S TRACKS</h2>
         </div>
 
@@ -20,7 +20,7 @@ export default class Login extends Component {
           </h6>
         </div>
         <button
-          className="btn round-corner btn-success btn-sm mt-2 px-5"
+          className="btn round-corner btn-success btn-sm mt-4 px-5"
           onClick={() => {
             window.location = window.location.href.includes('localhost')
               ? 'http://localhost:8888/login'

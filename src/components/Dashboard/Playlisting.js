@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import Login from '../login/Login';
+import Header from '../../components/Header/Header';
 import PlaylistCard from './PlaylistCard';
 import SearchFilter from './SearchFilter';
 import HoursCounter from './HoursCounter';
@@ -49,6 +50,7 @@ class Playlisting extends Component {
     })
       .then(response => response.json())
       .then(playlistData => {
+        console.log(playlistData);
         let playlists = playlistData.items;
         let trackDataPromises = playlists.map(playlist => {
           let responsePromise = fetch(playlist.tracks.href, {
@@ -59,7 +61,9 @@ class Playlisting extends Component {
           );
           return trackDataPromise;
         });
+
         let allTracksDataPromises = Promise.all(trackDataPromises);
+
         let playlistsPromise = allTracksDataPromises.then(trackDatas => {
           trackDatas.forEach((trackData, i) => {
             playlists[i].trackDatas = trackData.items
@@ -87,10 +91,8 @@ class Playlisting extends Component {
       );
   }
 
-  renderLogin() {
-    let fetchingPlaylists = this.state.fetchingPlaylists;
-    let fetchingUser = this.state.fetchingUser;
-    if (fetchingUser || fetchingPlaylists) {
+  renderLogin(user, playlists, fetchingUser, fetchingPlaylists) {
+    if ((!user || !playlists) && (!fetchingUser || !fetchingPlaylists)) {
       return (
         <div className="img-loading-overlay">
           <div className="img-spinning-circle" />
@@ -106,31 +108,34 @@ class Playlisting extends Component {
     let fetchingUser = this.state.fetchingUser;
     let fetchingPlaylists = this.state.fetchingPlaylists;
 
-    if (user && playlistToRender && !fetchingPlaylists && !fetchingUser) {
-      return (
-        <div className="app-playlists">
-          <h1 className="text-white p-2 pb-5 pt-5">
-            {user.name}
-            's Playlists
-          </h1>
-          <PlaylistCounter playlists={playlistToRender} />
-          <HoursCounter playlists={playlistToRender} />
-
-          <SearchFilter
-            onTextChange={text => this.setState({ filterString: text })}
-          />
-          <div className="row justify-content-around mt-2">
-            {playlistToRender.map((playlist, index) => (
-              <PlaylistCard playlist={playlist} key={index} />
-            ))}
-          </div>
-        </div>
-      );
-    } else {
+    if (!user && !playlistToRender && (fetchingPlaylists || fetchingUser)) {
       return (
         <div className="img-loading-overlay">
           <div className="img-spinning-circle" />
         </div>
+      );
+    } else {
+      return (
+        <Fragment>
+          <Header />
+          <div className="app-playlists">
+            <h1 className="text-white p-2 pb-5 pt-5">
+              {user.name}
+              's Playlists
+            </h1>
+            <PlaylistCounter playlists={playlistToRender} />
+            <HoursCounter playlists={playlistToRender} />
+
+            <SearchFilter
+              onTextChange={text => this.setState({ filterString: text })}
+            />
+            <div className="row justify-content-around mt-2">
+              {playlistToRender.map((playlist, index) => (
+                <PlaylistCard playlist={playlist} key={index} />
+              ))}
+            </div>
+          </div>
+        </Fragment>
       );
     }
   }
@@ -157,11 +162,13 @@ class Playlisting extends Component {
   }
 
   render() {
-    const { user, playlists } = this.state;
+    const { user, playlists, fetchingUser, fetchingPlaylists } = this.state;
 
     return (
       <div className="App">
-        {user && playlists ? this.renderPlaylists(user) : this.renderLogin()}
+        {user && playlists
+          ? this.renderPlaylists(user)
+          : this.renderLogin(user, playlists, fetchingUser, fetchingPlaylists)}
       </div>
     );
   }
