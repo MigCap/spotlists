@@ -10,7 +10,7 @@ export default class HoursCounter extends Component {
     }, 0);
     return (
       <div className="text-success mx-4">
-        <h6 className="font-weight-bolder mb-0">
+        <h6 className="font-weight-bolder mb-1">
           {Math.round(totalDuration / 60)}
         </h6>
         <h6 className="text-muted text-uppercase small-font"> hours</h6>
