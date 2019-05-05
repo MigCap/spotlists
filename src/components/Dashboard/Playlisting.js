@@ -143,10 +143,15 @@ class Playlisting extends Component {
             <SearchFilter
               onTextChange={text => this.setState({ filterString: text })}
             />
-            <div className="mt-lg-5">
-              <h5 className="text-white font-weight-bold text-left ml-5 mb-4">
-                Playlists
-              </h5>
+            <div className="mt-lg-5 ml-md-4 ml-lg-5">
+              <div className="row align-items-center justify-content-start no-gutters mt-5 mb-4">
+                <div className="col-4 col-md-2 align-self-center">
+                  <h5 className="text-white font-weight-bold text-center">
+                    Playlists
+                  </h5>
+                </div>
+              </div>
+
               {playlistToRender && playlistToRender.length !== 0 ? (
                 playlistToRender.map((playlist, index) => (
                   <PlaylistCard playlist={playlist} key={index} />

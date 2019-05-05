@@ -49,10 +49,6 @@ button.round-corner {
 .bold {
   font-weight: bold; }
 
-@font-face {
-  font-family: 'circularBlack';
-  src: url("/font/CircularStd-Black.woff2") format("woff2"); }
-
 * {
   box-sizing: border-box; }
 
@@ -61,7 +57,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: #181818;
-  font-family: 'circularBlack', 'Montserrat', sans-serif !important;
+  font-family: 'Montserrat', sans-serif !important;
   height: 100vh !important; }
 
 .App {
@@ -90,19 +86,19 @@ div.no-border {
   max-width: 100px; }
 
 .avatar {
-  width: 7em;
-  height: 7em;
+  width: 6em;
+  height: 6em;
   border: solid white 2px;
   border-radius: 100px; }
 
 #user-icon {
-  width: 4em;
+  width: 3em;
   fill: white; }
 
 input.round-corner {
   border-radius: 50px;
   border: solid 1.5px white;
-  max-width: 30%;
+  max-width: 40%;
   background: #181818; }
 
 input[type='text']::placeholder {
@@ -116,6 +112,45 @@ input[type='text']::placeholder {
 .playlist-img {
   width: 40%;
   height: 40%; }
+
+@media (max-width: 992px) {
+  input.round-corner {
+    max-width: 50%; }
+  .playlist-img {
+    width: 50%;
+    height: 50%; } }
+
+@media (max-width: 768px) {
+  .avatar {
+    width: 5em;
+    height: 5em;
+    border: solid white 2px;
+    border-radius: 100px; }
+  #user-icon {
+    width: 3em;
+    fill: white; }
+  input.round-corner {
+    max-width: 60%; }
+  .playlist-img {
+    width: 40%;
+    height: 40%; }
+  .small-font {
+    font-size: 0.8em; } }
+
+@media (max-width: 576px) {
+  .avatar {
+    width: 5em;
+    height: 5em;
+    border: solid white 2px;
+    border-radius: 100px; }
+  #user-icon {
+    width: 3em;
+    fill: white; }
+  input.round-corner {
+    max-width: 75%; }
+  .playlist-img {
+    width: 50%;
+    height: 50%; } }
 
 /*!
  * Bootstrap v4.2.1 (https://getbootstrap.com/)

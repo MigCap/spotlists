@@ -16,29 +16,33 @@ class PlaylistCard extends Component {
   render() {
     const { playlist } = this.props;
     return (
-      <div className="row align-items-center justify-content-start no-gutters mb-5">
-        <div className="col-2 align-self-center">
+      <div className="row align-items-center justify-content-start no-gutters mb-4">
+        <div className="col-4 col-md-2 align-self-center">
           <img
-            className="img-fluid rounded-circle playlist-img"
+            className="rounded-circle playlist-img"
             alt=""
             src={playlist.imageUrl}
           />
         </div>
-        <div className="col-9 text-left align-self-start">
+        <div className="col-8 col-md-9 text-left align-self-start">
           <p className="text-white font-weight-bold mb-1">
             {this.setPlaylistName(playlist.name)}
           </p>
           <div className="row">
-            <div className="col-6">
+            <div className="col-7 col-md-6">
               {playlist.songs.map((song, index) => (
-                <p className="text-muted small-font m-0" key={index}>
+                <p
+                  className="text-muted text-truncate small-font m-0"
+                  key={index}>
                   {song.name}
                 </p>
               ))}
             </div>
-            <div className="col-6">
+            <div className="col-5 col-md-6">
               {playlist.songs.map((song, index) => (
-                <p className="text-muted small-font m-0" key={index}>
+                <p
+                  className="text-muted text-right small-font m-0 mr-4 mr-sm-5"
+                  key={index}>
                   {this.getTrackMinutesSeconds(song.duration)}
                 </p>
               ))}
