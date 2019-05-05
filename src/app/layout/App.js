@@ -1,14 +1,22 @@
 import React, { Component, Fragment } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
 import './App.css';
 
-import Playlisting from '../../components/Dashboard/Playlisting';
+import Login from '../../components/Login/Login';
+import Dashboard from '../../components/Dashboard/Dashboard';
 
 class App extends Component {
   render() {
     return (
-      <Fragment>
-        <Playlisting />
-      </Fragment>
+      <BrowserRouter>
+        <Fragment>
+          <Switch>
+            <Route exact path="/" component={Login} />
+            <Route exact path="/dashboard" component={Dashboard} />
+          </Switch>
+        </Fragment>
+      </BrowserRouter>
     );
   }
 }

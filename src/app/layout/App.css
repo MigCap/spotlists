@@ -56,9 +56,15 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background-color: #181818;
+  background-color: #181818 !important;
   font-family: 'Montserrat', sans-serif !important;
   height: 100vh !important; }
+
+a {
+  transition: all 0.2s ease-in-out; }
+  a:hover {
+    color: #1ed760 !important;
+    text-decoration: none !important; }
 
 .App {
   text-align: center;
@@ -80,7 +86,8 @@ div.no-border {
     background-color: transparent; }
 
 .small-font {
-  font-size: 0.7em; }
+  font-size: 0.6em;
+  color: #9b9b9b; }
 
 .navbar-logo {
   max-width: 100px; }
@@ -111,7 +118,10 @@ input[type='text']::placeholder {
 
 .playlist-img {
   width: 40%;
-  height: 40%; }
+  height: 40%;
+  transition: all 0.2s ease-in-out; }
+  .playlist-img:hover {
+    transform: scale(1.1); }
 
 @media (max-width: 992px) {
   input.round-corner {
@@ -135,7 +145,7 @@ input[type='text']::placeholder {
     width: 40%;
     height: 40%; }
   .small-font {
-    font-size: 0.8em; } }
+    font-size: 0.7em; } }
 
 @media (max-width: 576px) {
   .avatar {
@@ -149,8 +159,8 @@ input[type='text']::placeholder {
   input.round-corner {
     max-width: 75%; }
   .playlist-img {
-    width: 50%;
-    height: 50%; } }
+    width: 55%;
+    height: 55%; } }
 
 /*!
  * Bootstrap v4.2.1 (https://getbootstrap.com/)
@@ -7074,21 +7084,3 @@ a.text-dark:hover, a.text-dark:focus {
   .table .thead-dark th {
     color: inherit;
     border-color: #dee2e6; } }
-
-/* @include media-sm {
-  html {
-    font-size: 0.6rem;
-  }
-}
-
-@include media-md {
-  html {
-    font-size: 1rem;
-  }
-}
-
-@include media-lg {
-  html {
-    font-size: 1rem;
-  }
-} */
