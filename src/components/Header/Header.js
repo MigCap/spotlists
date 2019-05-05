@@ -8,7 +8,11 @@ export default class Header extends Component {
       <div className="container">
         <nav className="navbar navbar-expand-lg navbar-fixed-top">
           <a className="navbar-brand text-white" href={href}>
-            <img className="navbar-logo" src="spt-logo.png" alt="spotify logo" />
+            <img
+              className="navbar-logo"
+              src="spt-logo.png"
+              alt="spotify logo"
+            />
           </a>
           <button
             className="navbar-toggler"
