@@ -9,7 +9,7 @@ export default class HoursCounter extends Component {
       return sum + eachSong.duration;
     }, 0);
     return (
-      <div className="text-success mx-4">
+      <div className="text-success mx-2">
         <h6 className="font-weight-bolder mb-1">
           {Math.round(totalDuration / 60)}
         </h6>

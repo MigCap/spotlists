@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export default class PlaylistCounter extends Component {
   render() {
     return (
-      <div className="text-success mx-4">
+      <div className="text-success mx-2">
         <h6 className="font-weight-bolder mb-1">
           {this.props.playlists.length}
         </h6>

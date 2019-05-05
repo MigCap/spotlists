@@ -27,12 +27,16 @@ export default class Header extends Component {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ml-auto">
               <li className="nav-item active">
-                <a className="nav-link text-success" href={href}>
+                <a
+                  className="nav-link text-success text-uppercase small-font font-weight-bold"
+                  href={href}>
                   Home <span className="sr-only">(current)</span>
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link text-success" href="/login">
+                <a
+                  className="nav-link text-success text-uppercase small-font font-weight-bold"
+                  href="/">
                   Logout
                 </a>
               </li>
