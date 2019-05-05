@@ -62,7 +62,6 @@ class Dashboard extends Component {
     })
       .then(response => response.json())
       .then(playlistData => {
-        // console.log(playlistData);
         let playlists = playlistData.items;
         let trackDataPromises = playlists.map(playlist => {
           let responsePromise = fetch(playlist.tracks.href, {
@@ -77,7 +76,6 @@ class Dashboard extends Component {
         let allTracksDataPromises = Promise.all(trackDataPromises);
 
         let playlistsPromise = allTracksDataPromises.then(trackDatas => {
-          console.log(trackDatas);
           trackDatas.forEach((trackData, i) => {
             playlists[i].trackDatas = trackData.items
               .map(item => item.track)
@@ -110,7 +108,6 @@ class Dashboard extends Component {
 
   filterPlaylists() {
     const { user, playlists } = this.state;
-    // console.log(playlists);
 
     if (user && playlists) {
       return playlists.filter(playlist => {
