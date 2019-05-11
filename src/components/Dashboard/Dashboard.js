@@ -29,14 +29,14 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    let accessToken = this.props.location.state.accessToken;
+    if (this.props.location.state !== undefined) {
+      let accessToken = this.props.location.state.accessToken;
 
-    if (!accessToken) {
+      this.fetchUser(accessToken);
+      this.fetchPlaylists(accessToken);
+    } else {
       return <Redirect to={{ pathname: '/' }} />;
     }
-
-    this.fetchUser(accessToken);
-    this.fetchPlaylists(accessToken);
   }
 
   fetchUser(accessToken) {
@@ -126,7 +126,7 @@ class Dashboard extends Component {
     }
   }
 
-  render() {
+  renderPlaylists() {
     const { user, playlists, fetchingUser, fetchingPlaylists } = this.state;
     let playlistToRender = this.filterPlaylists();
 
@@ -154,6 +154,16 @@ class Dashboard extends Component {
           <Loader />
         )}
       </div>
+    );
+  }
+
+  render() {
+    const isAuth = this.props.location.state !== undefined;
+
+    return isAuth ? (
+      this.renderPlaylists()
+    ) : (
+      <Redirect to={{ pathname: '/' }} />
     );
   }
 }
