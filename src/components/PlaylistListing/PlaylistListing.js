@@ -8,12 +8,10 @@ export default function PlaylistListing(props) {
   return (
     <Fragment>
       <div className="app-playlists">
-        <div className="container mt-lg-5">
+        <div className="mt-lg-5">
           <div className="row align-items-center justify-content-start no-gutters mt-5 mb-4">
-            <div className="col-6 col-sm-5 col-md-3 align-self-center">
-              <h5 className="text-white font-weight-bold text-center">
-                Your Playlists
-              </h5>
+            <div className="col-12 col-md-4 align-self-center">
+              <h5 className="text-white font-weight-bold">Your Playlists</h5>
             </div>
           </div>
 
@@ -23,7 +21,7 @@ export default function PlaylistListing(props) {
             ))
           ) : (
             <div className="mt-5 text-white">
-              <h6>No playlists or tracks matching the search</h6>
+              <h6>No playlists or songs matching the search</h6>
             </div>
           )}
         </div>

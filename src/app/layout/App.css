@@ -123,12 +123,19 @@ input[type='text']::placeholder {
   .playlist-img:hover {
     transform: scale(1.1); }
 
+@media (min-width: 992px) {
+  input.round-corner {
+    max-width: 40%; }
+  .playlist-img {
+    width: 65%;
+    height: 65%; } }
+
 @media (max-width: 992px) {
   input.round-corner {
     max-width: 50%; }
   .playlist-img {
-    width: 50%;
-    height: 50%; } }
+    width: 70%;
+    height: 70%; } }
 
 @media (max-width: 768px) {
   .avatar {
@@ -142,8 +149,7 @@ input[type='text']::placeholder {
   input.round-corner {
     max-width: 60%; }
   .playlist-img {
-    width: 40%;
-    height: 40%; }
+    display: none; }
   .small-font {
     font-size: 0.7em; } }
 
@@ -159,8 +165,7 @@ input[type='text']::placeholder {
   input.round-corner {
     max-width: 75%; }
   .playlist-img {
-    width: 55%;
-    height: 55%; } }
+    display: none; } }
 
 /*!
  * Bootstrap v4.2.1 (https://getbootstrap.com/)
