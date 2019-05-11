@@ -4,6 +4,9 @@ class PlaylistCard extends Component {
   getTrackMinutesSeconds = trackDuration => {
     let minutes = parseInt(Math.floor(trackDuration / 60));
     let seconds = parseInt(trackDuration - minutes * 60);
+    if (seconds < 10) {
+      seconds = `0${seconds}`;
+    }
     return `${minutes} : ${seconds}`;
   };
   setPlaylistName(playlistString) {
@@ -16,7 +19,7 @@ class PlaylistCard extends Component {
   render() {
     const { playlist } = this.props;
     return (
-      <div className="row align-items-center justify-content-start no-gutters mb-4">
+      <div className="row align-items-center justify-content-center no-gutters mb-4">
         <div className="col-4 col-md-2 align-self-center">
           <a
             href={playlist.externalUrl}
@@ -30,38 +33,44 @@ class PlaylistCard extends Component {
             />
           </a>
         </div>
-        <div className="col-8 col-md-9 text-left">
-          <div className="text-white font-weight-bold mb-1">
-            <a
-              className="text-white"
-              href={playlist.externalUrl}
-              target="_blank"
-              rel="noopener noreferrer">
-              {this.setPlaylistName(playlist.name)}
-            </a>{' '}
-            -
-            <span className="text-muted small-font ml-1">
-              {`${playlist.totalTracks} Tracks`}
-            </span>
-          </div>
-          <div className="row">
-            <div className="col-7 col-sm-7 col-md-9">
-              {playlist.songs.map((song, index) => (
-                <p
-                  className="text-muted text-truncate small-font m-0"
-                  key={index}>
-                  <span className="text-white">{song.artistName}</span> ·{' '}
-                  {song.trackName} ({song.albumTitle})
-                </p>
-              ))}
+        <div className="col-12 col-md-9 text-left mb-1">
+          <div className="row justify-content-center">
+            <div className="col-11 col-md-12">
+              <div className="text-white font-weight-bold mb-1">
+                <a
+                  className="text-white"
+                  href={playlist.externalUrl}
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  {this.setPlaylistName(playlist.name)}
+                </a>{' '}
+                <span className="text-muted small-font ml-1">
+                  {`${playlist.totalTracks} Tracks`}
+                </span>
+              </div>
             </div>
-            <div className="col-5 col-sm-5 col-md-3 align-self-end">
+          </div>
+          <div className="row justify-content-center">
+            <div className="col-11 col-md-12">
               {playlist.songs.map((song, index) => (
-                <p
-                  className="text-muted text-right small-font m-0 mr-sm-3"
-                  key={index}>
-                  {this.getTrackMinutesSeconds(song.duration)}
-                </p>
+                <div className="row mb-2" key={index}>
+                  <div className="col-10 col-sm-7 col-md-9 pr-0">
+                    <div>
+                      <p className="small-font m-0">
+                        <span className="text-muted">{song.trackName}</span>
+                      </p>
+                      <p className="text-muted text-truncate small-font m-0">
+                        <span className="text-white">{song.artistName}</span> -{' '}
+                        {song.albumTitle}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="col-2 col-sm-5 col-md-3 pl-0 align-self-start">
+                    <p className="text-muted text-right small-font m-0 p-0 mr-sm-3 mr-md-4 mr-lg-5">
+                      {this.getTrackMinutesSeconds(song.duration)}
+                    </p>
+                  </div>
+                </div>
               ))}
             </div>
           </div>
