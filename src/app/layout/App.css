@@ -50,27 +50,64 @@ button.round-corner {
   font-weight: bold; }
 
 nav.navBar {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  -webkit-box-pack: center;
+  justify-content: center;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 10px;
   position: fixed;
   bottom: 0;
   z-index: 10;
   width: 100%;
-  background-color: #040306;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  -webkit-box-pack: center;
-  justify-content: center; }
+  background-color: #040306; }
   @media (min-width: 900px) {
     nav.navBar {
+      -webkit-box-pack: justify;
+      justify-content: space-between;
+      -webkit-box-align: center;
       align-items: center;
+      flex-direction: column;
       min-height: 100vh;
       position: fixed;
       top: 0px;
       left: 0px;
       width: 100px;
-      text-align: center;
-      z-index: 99; } }
+      text-align: center; } }
+  nav.navBar .spotify-nav-icon {
+    display: none; }
+    @media (min-width: 900px) {
+      nav.navBar .spotify-nav-icon {
+        display: block;
+        color: #9b9b9b;
+        width: 40px;
+        height: 40px;
+        margin-top: 40px;
+        opacity: 0.8; }
+        nav.navBar .spotify-nav-icon:hover {
+          transition: all 0.2s ease-in-out;
+          opacity: 1; } }
+    nav.navBar .spotify-nav-icon a svg {
+      fill: #1ed760;
+      vertical-align: middle; }
+  nav.navBar .github-icon {
+    display: none; }
+    @media (min-width: 900px) {
+      nav.navBar .github-icon {
+        display: block;
+        width: 35px;
+        height: 35px;
+        margin-bottom: 40px;
+        opacity: 0.8; } }
+    nav.navBar .github-icon a:hover {
+      transition: all 0.2s ease-in-out;
+      opacity: 1; }
+    nav.navBar .github-icon a svg {
+      fill: #9b9b9b;
+      vertical-align: middle; }
+      nav.navBar .github-icon a svg:hover {
+        transition: all 0.2s ease-in-out;
+        fill: white; }
 
 ul.navegacion {
   display: flex;
