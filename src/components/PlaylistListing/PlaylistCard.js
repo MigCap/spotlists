@@ -57,11 +57,10 @@ class PlaylistCard extends Component {
                   <div className="col-10 col-sm-7 col-md-9">
                     <div>
                       <p className="small-font m-0">
-                        <span className="text-muted">{song.trackName}</span>
+                        <span className="text-white">{song.trackName}</span>
                       </p>
                       <p className="text-muted text-truncate small-font m-0">
-                        <span className="text-white">{song.artistName}</span> -{' '}
-                        {song.albumTitle}
+                        {song.artistName} - {song.albumTitle}
                       </p>
                     </div>
                   </div>
