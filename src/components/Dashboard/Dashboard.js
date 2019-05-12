@@ -30,7 +30,6 @@ class Dashboard extends Component {
 
   componentDidMount() {
     const accessToken = window.localStorage.getItem('spotify_access_token');
-    console.log(accessToken);
 
     if (accessToken && accessToken !== '') {
       this.fetchUser(accessToken);
