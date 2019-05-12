@@ -161,7 +161,7 @@ class Dashboard extends Component {
               <Followers user={user} />
             </div>
             <NavLink
-              className="btn btn-sm btn-white text-white round-corner mt-4 mb-5 px-4 py-2"
+              className="btn btn-sm btn-white text-white round-corner font-weight-bold mt-4 mb-5 px-4 py-2"
               to="/">
               LOGOUT
             </NavLink>

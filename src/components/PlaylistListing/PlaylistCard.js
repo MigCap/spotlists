@@ -19,8 +19,8 @@ class PlaylistCard extends Component {
   render() {
     const { playlist } = this.props;
     return (
-      <div className="row align-items-center justify-content-center no-gutters pb-2">
-        <div className="col-4 col-md-2 align-self-start pt-1">
+      <div className="row justify-content-center no-gutters pb-3">
+        <div className="col-4 col-md-2 align-self-start pt-2">
           <a
             href={playlist.externalUrl}
             alt={`Spotify Playlist: ${this.setPlaylistName(playlist.name)}`}
@@ -50,7 +50,7 @@ class PlaylistCard extends Component {
               </div>
             </div>
           </div>
-          <div className="row justify-content-center">
+          <div className="row justify-content-center pl-2">
             <div className="col-11 col-md-12">
               {playlist.songs.map((song, index) => (
                 <div className="row pb-2" key={index}>
