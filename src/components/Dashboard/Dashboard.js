@@ -48,7 +48,6 @@ class Dashboard extends Component {
       .then(response => response.json())
       .then(data => {
         if (data.error) {
-          console.log('fetcherror');
           this.setState({
             fetchError: true
           });
@@ -74,8 +73,6 @@ class Dashboard extends Component {
       .then(response => response.json())
       .then(playlistData => {
         if (playlistData.error) {
-          console.log('fetcherror');
-
           this.setState({
             fetchError: true
           });
