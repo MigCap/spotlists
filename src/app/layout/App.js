@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import './App.css';
@@ -13,14 +13,14 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <Fragment>
+        <div className="App">
+          <Header />
           <Switch>
             <Route exact path="/" component={LoginHook} />
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/playlists" component={Playlists} />
           </Switch>
-          <Header />
-        </Fragment>
+        </div>
       </BrowserRouter>
     );
   }
