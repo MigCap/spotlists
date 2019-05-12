@@ -33,7 +33,7 @@ class Header extends Component {
               <div className="mt-1">Dashboard</div>
             </NavLink>
           </li>
-          <li className="">
+          <li>
             <a className="text-white font-weight-bold" href={href}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -47,11 +47,10 @@ class Header extends Component {
                   <path d="M22.161,14.999L0.646,39.161c-0.9,1.011-0.854,2.604,0.103,3.562l1.132,1.133L1.158,44.58     c-0.477,0.477-0.477,1.256,0,1.731l0.108,0.108c0.477,0.478,1.256,0.478,1.733,0l0.723-0.724l1.055,1.055     c0.957,0.957,2.552,1.003,3.563,0.104l24.155-21.509c-2.469-0.633-4.739-1.902-6.589-3.752     C24.019,19.706,22.779,17.416,22.161,14.999z M21.02,29.268l-5.145,5.146c-0.77,0.771-2.018,0.771-2.787,0     c-0.769-0.771-0.77-2.02,0-2.787l5.145-5.146c0.77-0.771,2.018-0.771,2.787,0C21.789,27.251,21.79,28.499,21.02,29.268z" />
                 </g>
               </svg>
-              <div className="mt-1">Top Artists</div>{' '}
-              <span className="sr-only">(current)</span>
+              <div className="mt-1">Top Artists</div>
             </a>
           </li>
-          <li className="">
+          <li>
             <a className="text-white font-weight-bold" href={href}>
               <svg
                 version="1.1"
@@ -62,11 +61,10 @@ class Header extends Component {
                 viewBox="0 0 489.164 489.164">
                 <path d="M159.582,75.459v285.32c-14.274-10.374-32.573-16.616-52.5-16.616c-45.491,0-82.5,32.523-82.5,72.5s37.009,72.5,82.5,72.5 s82.5-32.523,82.5-72.5V168.942l245-60.615v184.416c-14.274-10.374-32.573-16.616-52.5-16.616c-45.491,0-82.5,32.523-82.5,72.5 s37.009,72.5,82.5,72.5s82.5-32.523,82.5-72.5V0L159.582,75.459z" />
               </svg>
-              <div className="mt-1">Top Tracks</div>{' '}
-              <span className="sr-only">(current)</span>
+              <div className="mt-1">Top Tracks</div>
             </a>
           </li>
-          <li className="">
+          <li>
             <a className="text-white font-weight-bold" href={href}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -83,11 +81,10 @@ class Header extends Component {
                   </g>
                 </g>
               </svg>
-              <div className="mt-1">Recent</div>{' '}
-              <span className="sr-only">(current)</span>
+              <div className="mt-1">Recent</div>
             </a>
           </li>
-          <li className="">
+          <li>
             <NavLink
               className="text-white font-weight-bold"
               to="/playlists"
@@ -105,8 +102,7 @@ class Header extends Component {
                   <rect x="0" y="224" width="170.667" height="42.667" />
                 </g>
               </svg>
-              <div className="mt-1">Playlists</div>{' '}
-              <span className="sr-only">(current)</span>
+              <div className="mt-1">Playlists</div>
             </NavLink>
           </li>
         </ul>

@@ -19,24 +19,24 @@ class PlaylistCard extends Component {
   render() {
     const { playlist } = this.props;
     return (
-      <div className="row align-items-center justify-content-center no-gutters mb-2">
-        <div className="col-4 col-md-2 align-self-start">
+      <div className="row align-items-center justify-content-center no-gutters pb-2">
+        <div className="col-4 col-md-2 align-self-start pt-1">
           <a
             href={playlist.externalUrl}
             alt={`Spotify Playlist: ${this.setPlaylistName(playlist.name)}`}
             target="_blank"
             rel="noopener noreferrer">
             <img
-              className="playlist-img py-2"
+              className="playlist-img"
               alt={`Spotify Playlist: ${this.setPlaylistName(playlist.name)}`}
               src={playlist.imageUrl}
             />
           </a>
         </div>
-        <div className="col-12 col-md-9 text-left mb-1">
+        <div className="col-12 col-md-9 text-left pb-1">
           <div className="row justify-content-center">
             <div className="col-11 col-md-12">
-              <div className="text-white font-weight-bold mb-1">
+              <div className="text-white font-weight-bold pb-1">
                 <a
                   className="text-white"
                   href={playlist.externalUrl}
@@ -44,7 +44,7 @@ class PlaylistCard extends Component {
                   rel="noopener noreferrer">
                   {this.setPlaylistName(playlist.name)}
                 </a>{' '}
-                <span className="text-muted small-font ml-1">
+                <span className="text-muted small-font pl-1">
                   {`${playlist.totalTracks} Tracks`}
                 </span>
               </div>
@@ -53,8 +53,8 @@ class PlaylistCard extends Component {
           <div className="row justify-content-center">
             <div className="col-11 col-md-12">
               {playlist.songs.map((song, index) => (
-                <div className="row mb-2" key={index}>
-                  <div className="col-10 col-sm-7 col-md-9 pr-0">
+                <div className="row pb-2" key={index}>
+                  <div className="col-10 col-sm-7 col-md-9">
                     <div>
                       <p className="small-font m-0">
                         <span className="text-muted">{song.trackName}</span>
@@ -66,7 +66,7 @@ class PlaylistCard extends Component {
                     </div>
                   </div>
                   <div className="col-2 col-sm-5 col-md-3 pl-0 align-self-start">
-                    <p className="text-muted text-right small-font m-0 p-0 mr-sm-3 mr-md-4 mr-lg-5">
+                    <p className="text-muted text-right small-font m-0 p-0">
                       {this.getTrackMinutesSeconds(song.duration)}
                     </p>
                   </div>

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { NavLink, Redirect } from 'react-router-dom';
 
 import UserAvatar from './UserAvatar';
@@ -150,12 +150,12 @@ class Dashboard extends Component {
     let playlistToRender = this.filterPlaylists();
 
     return (
-      <div className="App">
+      <Fragment>
         {user && playlists && !fetchingUser && !fetchingPlaylists ? (
           <div className="app-playlists">
             <UserAvatar user={user} />
 
-            <div className="d-flex justify-content-center mx-auto">
+            <div className="d-flex justify-content-center">
               <PlaylistCounter playlists={playlistToRender} />
               <HoursCounter playlists={playlistToRender} />
               <Followers user={user} />
@@ -177,7 +177,7 @@ class Dashboard extends Component {
         ) : (
           <Loader />
         )}
-      </div>
+      </Fragment>
     );
   }
 
