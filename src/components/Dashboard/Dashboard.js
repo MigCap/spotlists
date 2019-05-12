@@ -30,11 +30,14 @@ class Dashboard extends Component {
 
   componentDidMount() {
     const accessToken = window.localStorage.getItem('spotify_access_token');
+    console.log(accessToken);
 
     if (accessToken && accessToken !== '') {
       this.fetchUser(accessToken);
       this.fetchPlaylists(accessToken);
-    } else {
+    }
+
+    if (!accessToken || this.state.fetchError) {
       return <Redirect to={{ pathname: '/' }} />;
     }
   }
@@ -46,9 +49,11 @@ class Dashboard extends Component {
       .then(response => response.json())
       .then(data => {
         if (data.error) {
+          console.log('fetcherror');
           this.setState({
             fetchError: true
           });
+          return <Redirect to={{ pathname: '/' }} />;
         } else {
           this.setState({
             accessToken,
@@ -70,9 +75,12 @@ class Dashboard extends Component {
       .then(response => response.json())
       .then(playlistData => {
         if (playlistData.error) {
+          console.log('fetcherror');
+
           this.setState({
             fetchError: true
           });
+          return <Redirect to={{ pathname: '/' }} />;
         } else {
           let playlists = playlistData.items;
           let trackDataPromises = playlists.map(playlist => {
@@ -104,7 +112,7 @@ class Dashboard extends Component {
         }
       })
       .then(playlists => {
-        if (playlists) {
+        if (playlists && playlists.length >= 0) {
           this.setState({
             playlists: playlists.map(item => {
               return {
