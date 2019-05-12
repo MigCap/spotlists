@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 
-import Header from '../../components/Header/Header';
 import UserAvatar from './UserAvatar';
 import PlaylistCounter from './PlaylistCounter';
 import HoursCounter from './HoursCounter';
@@ -24,14 +23,15 @@ class Dashboard extends Component {
       playlists: [],
       filterString: '',
       fetchingUser: true,
-      fetchingPlaylists: true
+      fetchingPlaylists: true,
+      fetchError: false
     };
   }
 
   componentDidMount() {
-    if (this.props.location.state !== undefined) {
-      let accessToken = this.props.location.state.accessToken;
+    const accessToken = window.localStorage.getItem('spotify_access_token');
 
+    if (accessToken && accessToken !== '') {
       this.fetchUser(accessToken);
       this.fetchPlaylists(accessToken);
     } else {
@@ -45,14 +45,21 @@ class Dashboard extends Component {
     })
       .then(response => response.json())
       .then(data => {
-        this.setState({
-          user: {
-            name: data.display_name ? data.display_name : data.id,
-            followers: data.followers.total,
-            url: data.external_urls.spotify
-          },
-          fetchingUser: false
-        });
+        if (data.error) {
+          this.setState({
+            fetchError: true
+          });
+        } else {
+          this.setState({
+            accessToken,
+            user: {
+              name: data.display_name ? data.display_name : data.id,
+              followers: data.followers.total,
+              url: data.external_urls.spotify
+            },
+            fetchingUser: false
+          });
+        }
       });
   }
 
@@ -62,47 +69,55 @@ class Dashboard extends Component {
     })
       .then(response => response.json())
       .then(playlistData => {
-        let playlists = playlistData.items;
-        let trackDataPromises = playlists.map(playlist => {
-          let responsePromise = fetch(playlist.tracks.href, {
-            headers: { Authorization: 'Bearer ' + accessToken }
+        if (playlistData.error) {
+          this.setState({
+            fetchError: true
           });
-          let trackDataPromise = responsePromise.then(response =>
-            response.json()
-          );
-          return trackDataPromise;
-        });
-
-        let allTracksDataPromises = Promise.all(trackDataPromises);
-
-        let playlistsPromise = allTracksDataPromises.then(trackDatas => {
-          trackDatas.forEach((trackData, i) => {
-            playlists[i].trackDatas = trackData.items
-              .map(item => item.track)
-              .map(trackData => ({
-                artistName: trackData.artists[0].name,
-                albumTitle: trackData.album.name,
-                trackName: trackData.name,
-                duration: trackData.duration_ms / 1000
-              }));
+        } else {
+          let playlists = playlistData.items;
+          let trackDataPromises = playlists.map(playlist => {
+            let responsePromise = fetch(playlist.tracks.href, {
+              headers: { Authorization: 'Bearer ' + accessToken }
+            });
+            let trackDataPromise = responsePromise.then(response =>
+              response.json()
+            );
+            return trackDataPromise;
           });
-          return playlists;
-        });
-        return playlistsPromise;
+
+          let allTracksDataPromises = Promise.all(trackDataPromises);
+
+          let playlistsPromise = allTracksDataPromises.then(trackDatas => {
+            trackDatas.forEach((trackData, i) => {
+              playlists[i].trackDatas = trackData.items
+                .map(item => item.track)
+                .map(trackData => ({
+                  artistName: trackData.artists[0].name,
+                  albumTitle: trackData.album.name,
+                  trackName: trackData.name,
+                  duration: trackData.duration_ms / 1000
+                }));
+            });
+            return playlists;
+          });
+          return playlistsPromise;
+        }
       })
       .then(playlists => {
-        this.setState({
-          playlists: playlists.map(item => {
-            return {
-              name: item.name,
-              imageUrl: item.images.find(image => image.width === 300).url,
-              songs: item.trackDatas.slice(0, 3),
-              totalTracks: item.tracks.total,
-              externalUrl: item.external_urls.spotify
-            };
-          }),
-          fetchingPlaylists: false
-        });
+        if (playlists) {
+          this.setState({
+            playlists: playlists.map(item => {
+              return {
+                name: item.name,
+                imageUrl: item.images.find(image => image.width === 300).url,
+                songs: item.trackDatas.slice(0, 3),
+                totalTracks: item.tracks.total,
+                externalUrl: item.external_urls.spotify
+              };
+            }),
+            fetchingPlaylists: false
+          });
+        }
       });
   }
 
@@ -134,13 +149,18 @@ class Dashboard extends Component {
       <div className="App">
         {user && playlists && !fetchingUser && !fetchingPlaylists ? (
           <div className="app-playlists">
-            <Header />
             <UserAvatar user={user} />
-            <div className="d-flex justify-content-center">
+
+            <div className="d-flex justify-content-center mx-auto">
               <PlaylistCounter playlists={playlistToRender} />
               <HoursCounter playlists={playlistToRender} />
               <Followers user={user} />
             </div>
+            <NavLink
+              className="btn btn-sm btn-white text-white round-corner mt-4 mb-5 px-4 py-2"
+              to="/">
+              LOGOUT
+            </NavLink>
             <SearchFilter
               onTextChange={text => this.setState({ filterString: text })}
             />
@@ -158,13 +178,9 @@ class Dashboard extends Component {
   }
 
   render() {
-    const isAuth = this.props.location.state !== undefined;
+    const { accessToken } = this.state;
 
-    return isAuth ? (
-      this.renderPlaylists()
-    ) : (
-      <Redirect to={{ pathname: '/' }} />
-    );
+    return accessToken && accessToken !== '' && this.renderPlaylists();
   }
 }
 

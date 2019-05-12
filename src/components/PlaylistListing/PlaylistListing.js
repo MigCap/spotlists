@@ -10,7 +10,7 @@ export default function PlaylistListing(props) {
       <div className="app-playlists">
         <div className="mt-lg-5">
           <div className="row align-items-center justify-content-start no-gutters mt-5 mb-4">
-            <div className="col-12 col-md-4 align-self-center">
+            <div className="col-12 col-md-4 col-lg-3 align-self-center">
               <h5 className="text-white font-weight-bold">Your Playlists</h5>
             </div>
           </div>

@@ -19,15 +19,15 @@ class PlaylistCard extends Component {
   render() {
     const { playlist } = this.props;
     return (
-      <div className="row align-items-center justify-content-center no-gutters mb-4">
-        <div className="col-4 col-md-2 align-self-center">
+      <div className="row align-items-center justify-content-center no-gutters mb-2">
+        <div className="col-4 col-md-2 align-self-start">
           <a
             href={playlist.externalUrl}
             alt={`Spotify Playlist: ${this.setPlaylistName(playlist.name)}`}
             target="_blank"
             rel="noopener noreferrer">
             <img
-              className="rounded-circle playlist-img"
+              className="playlist-img py-2"
               alt={`Spotify Playlist: ${this.setPlaylistName(playlist.name)}`}
               src={playlist.imageUrl}
             />
