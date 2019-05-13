@@ -1,16 +1,11 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
-class Header extends Component {
+class NavBar extends Component {
   render() {
-    // const href = window.location.href;
-    const isLogin = this.props.location.pathname === '/';
-
-    return isLogin ? (
-      <Fragment />
-    ) : (
+    return (
       <nav className="navBar">
         <div className="spotify-nav-icon">
-          <a href="/dashboard">
+          <a href="/">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               version="1.1"
@@ -134,4 +129,4 @@ class Header extends Component {
   }
 }
 
-export default withRouter(Header);
+export default withRouter(NavBar);
