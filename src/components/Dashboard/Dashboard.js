@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react';
-import { NavLink, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+
+import { logout, fetchUser } from '../../app/spotify';
 
 import UserAvatar from './UserAvatar';
 import PlaylistCounter from './PlaylistCounter';
@@ -32,6 +34,7 @@ class Dashboard extends Component {
     const accessToken = window.localStorage.getItem('spotify_access_token');
 
     if (accessToken && accessToken !== '') {
+      // this.getData(accessToken);
       this.fetchUser(accessToken);
       this.fetchPlaylists(accessToken);
     }
@@ -39,6 +42,26 @@ class Dashboard extends Component {
     if (!accessToken || this.state.fetchError) {
       return <Redirect to={{ pathname: '/' }} />;
     }
+  }
+
+  async getData(accessToken) {
+    const {
+      fetchError,
+      username,
+      userFollowers,
+      userUrl,
+      fetchingUser
+    } = await fetchUser();
+    this.setState({
+      accessToken,
+      user: {
+        name: username,
+        followers: userFollowers,
+        url: userUrl
+      },
+      fetchingUser,
+      fetchError
+    });
   }
 
   fetchUser(accessToken) {
@@ -160,11 +183,11 @@ class Dashboard extends Component {
               <HoursCounter playlists={playlistToRender} />
               <Followers user={user} />
             </div>
-            <NavLink
+            <button
               className="btn btn-sm btn-white text-white round-corner font-weight-bold mt-4 mb-5 px-4 py-2"
-              to="/">
+              onClick={logout}>
               LOGOUT
-            </NavLink>
+            </button>
             <SearchFilter
               onTextChange={text => this.setState({ filterString: text })}
             />

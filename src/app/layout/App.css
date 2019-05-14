@@ -55,16 +55,20 @@ div.app-playlists {
 
 div.app-login {
   background-color: #181818;
-  height: 100vh !important; }
+  height: 100vh;
+  min-height: 100vh;
+  max-height: 100vh;
+  overflow: hidden; }
 
 .logo img {
-  max-width: 180px; }
+  max-width: 200px; }
 
 button.round-corner {
-  border-radius: 50px; }
-
-.bold {
-  font-weight: bold; }
+  border-radius: 50px;
+  font-size: 1em; }
+  @media (min-width: 764px) {
+    button.round-corner {
+      font-size: 1.2em; } }
 
 .navbar-logo {
   max-width: 100px; }
