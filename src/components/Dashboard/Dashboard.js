@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { NavLink, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 import UserAvatar from './UserAvatar';
 import PlaylistCounter from './PlaylistCounter';
@@ -160,11 +160,11 @@ class Dashboard extends Component {
               <HoursCounter playlists={playlistToRender} />
               <Followers user={user} />
             </div>
-            <NavLink
+            <a
               className="btn btn-sm btn-white text-white round-corner font-weight-bold mt-4 mb-5 px-4 py-2"
-              to="/">
+              href="/">
               LOGOUT
-            </NavLink>
+            </a>
             <SearchFilter
               onTextChange={text => this.setState({ filterString: text })}
             />

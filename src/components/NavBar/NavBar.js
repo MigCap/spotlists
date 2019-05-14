@@ -5,7 +5,7 @@ class NavBar extends Component {
     return (
       <nav className="navBar">
         <div className="spotify-nav-icon">
-          <a href="/">
+          <a href="/dashboard">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               version="1.1"
