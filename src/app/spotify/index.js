@@ -79,10 +79,17 @@ export const logout = () => {
 };
 
 export const getAccToken = () => {
+  const localToken = getLocalAccessToken();
   const parsed = queryString.parse(window.location.search);
   const token = parsed.access_token;
-  window.localStorage.setItem('spotify_access_token', token);
-  return token;
+  if (localToken !== '' && localToken !== 'undefined') {
+    return localToken;
+  } else if (token && token !== '') {
+    window.localStorage.setItem('spotify_access_token', token);
+    return token;
+  } else {
+    return undefined;
+  }
 };
 export const getToken = getAccToken();
 
@@ -353,3 +360,83 @@ export const getTrackInfo = trackId => {
       })
     );
 };
+
+// MY METHODS *******************************************************
+
+export const fetchUser = accessToken => {
+  fetch('https://api.spotify.com/v1/me', {
+    headers: { Authorization: 'Bearer ' + accessToken }
+  })
+    .then(response => response.json())
+    .then(data => {
+      if (data.error) {
+        return { fetchError: data.error };
+      } else {
+        return {
+          username: data.display_name ? data.display_name : data.id,
+          userFollowers: data.followers.total,
+          userUrl: data.external_urls.spotify,
+          fetchingUser: false
+        };
+      }
+    });
+};
+
+/* export const fetchPlaylists = (accessToken) => {
+  fetch('https://api.spotify.com/v1/me/playlists', {
+    headers: { Authorization: 'Bearer ' + accessToken }
+  })
+    .then(response => response.json())
+    .then(playlistData => {
+      if (playlistData.error) {
+        this.setState({
+          fetchError: true
+        });
+        return <Redirect to={{ pathname: '/' }} />;
+      } else {
+        let playlists = playlistData.items;
+        let trackDataPromises = playlists.map(playlist => {
+          let responsePromise = fetch(playlist.tracks.href, {
+            headers: { Authorization: 'Bearer ' + accessToken }
+          });
+          let trackDataPromise = responsePromise.then(response =>
+            response.json()
+          );
+          return trackDataPromise;
+        });
+
+        let allTracksDataPromises = Promise.all(trackDataPromises);
+
+        let playlistsPromise = allTracksDataPromises.then(trackDatas => {
+          trackDatas.forEach((trackData, i) => {
+            playlists[i].trackDatas = trackData.items
+              .map(item => item.track)
+              .map(trackData => ({
+                artistName: trackData.artists[0].name,
+                albumTitle: trackData.album.name,
+                trackName: trackData.name,
+                duration: trackData.duration_ms / 1000
+              }));
+          });
+          return playlists;
+        });
+        return playlistsPromise;
+      }
+    })
+    .then(playlists => {
+      if (playlists && playlists.length >= 0) {
+        this.setState({
+          playlists: playlists.map(item => {
+            return {
+              name: item.name,
+              imageUrl: item.images.find(image => image.width === 300).url,
+              songs: item.trackDatas.slice(0, 3),
+              totalTracks: item.tracks.total,
+              externalUrl: item.external_urls.spotify
+            };
+          }),
+          fetchingPlaylists: false
+        });
+      }
+    });
+} */

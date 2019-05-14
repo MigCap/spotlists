@@ -15,7 +15,7 @@ class Profile extends Component {
         <Fragment>
           <NavBar />
           <Switch>
-            <Route exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/" component={Dashboard} />
             <Route exact path="/top-artists" component={TopArtists} />
             <Route exact path="/top-tracks" component={TopTracks} />
             <Route exact path="/recent" component={Recent} />
