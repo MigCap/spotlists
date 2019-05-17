@@ -7,6 +7,7 @@ import TopArtists from './TopArtists/TopArtists';
 import TopTracks from './TopTracks/TopTracks';
 import Recent from './Recent/Recent';
 import Playlists from './Playlists/Playlists';
+import Playlist from './Playlist/Playlist';
 
 class Profile extends Component {
   render() {
@@ -20,6 +21,7 @@ class Profile extends Component {
             <Route exact path="/top-tracks" component={TopTracks} />
             <Route exact path="/recent" component={Recent} />
             <Route exact path="/playlists" component={Playlists} />
+            <Route exact path="/:playlistId" component={Playlist} />
           </Switch>
         </Fragment>
       </BrowserRouter>

@@ -1,52 +1,37 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
+import { setPlaylistName, getTrackMinutesSeconds } from '../../app/helpers';
 
 class PlaylistCard extends Component {
-  getTrackMinutesSeconds = trackDuration => {
-    let minutes = parseInt(Math.floor(trackDuration / 60));
-    let seconds = parseInt(trackDuration - minutes * 60);
-    if (seconds < 10) {
-      seconds = `0${seconds}`;
-    }
-    return `${minutes} : ${seconds}`;
-  };
-  setPlaylistName(playlistString) {
-    return (
-      playlistString.charAt(0).toUpperCase() +
-      playlistString.toLowerCase().slice(1)
-    );
-  }
-
   render() {
     const { playlist } = this.props;
     return (
       <div className="row justify-content-center no-gutters pb-3">
         <div className="col-4 col-md-2 align-self-start pt-1">
-          <a
-            href={playlist.externalUrl}
-            alt={`Spotify Playlist: ${this.setPlaylistName(playlist.name)}`}
-            target="_blank"
-            rel="noopener noreferrer">
+          <Link
+            to={playlist.id}
+            alt={`Spotify Playlist: ${setPlaylistName(playlist.name)}`}>
             <img
               className="playlist-img"
-              alt={`Spotify Playlist: ${this.setPlaylistName(playlist.name)}`}
+              alt={`Spotify Playlist: ${setPlaylistName(playlist.name)}`}
               src={playlist.imageUrl}
             />
-          </a>
+          </Link>
         </div>
-        <div className="col-12 col-md-9 text-left pb-1 pl-2">
+        <div className="col-12 col-md-9 text-left pb-1">
           <div className="row justify-content-center">
             <div className="col-11 col-md-12">
               <div className="text-white font-weight-bold pb-1">
-                <a
-                  className="text-white"
-                  href={playlist.externalUrl}
-                  target="_blank"
-                  rel="noopener noreferrer">
-                  {this.setPlaylistName(playlist.name)}
-                </a>{' '}
-                <span className="text-muted small-font pl-1">
-                  {`${playlist.totalTracks} Tracks`}
-                </span>
+                <Link
+                  to={playlist.id}
+                  alt={`Spotify Playlist: ${setPlaylistName(playlist.name)}`}
+                  className="text-white font-weight-bold">
+                  {setPlaylistName(playlist.name)}{' '}
+                  <span className="text-muted small-font pl-1">
+                    {`${playlist.totalTracks} Tracks`}
+                  </span>
+                </Link>
               </div>
             </div>
           </div>
@@ -66,7 +51,7 @@ class PlaylistCard extends Component {
                   </div>
                   <div className="col-2 col-sm-5 col-md-3 pl-0 align-self-start">
                     <p className="text-muted text-right small-font m-0 p-0">
-                      {this.getTrackMinutesSeconds(song.duration)}
+                      {getTrackMinutesSeconds(song.duration)}
                     </p>
                   </div>
                 </div>

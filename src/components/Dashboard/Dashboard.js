@@ -1,8 +1,10 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 
-import { logout, fetchUser } from '../../app/spotify';
+import { token, logout, getUserInfo } from '../../app/spotify';
+import { catchErrors } from '../../app/helpers';
 
+import Login from '../login/Login';
 import UserAvatar from './UserAvatar';
 import PlaylistCounter from './PlaylistCounter';
 import HoursCounter from './HoursCounter';
@@ -19,7 +21,7 @@ class Dashboard extends Component {
       accessToken: '',
       user: {
         name: '',
-        followers: undefined,
+        followers: 0,
         url: ''
       },
       playlists: [],
@@ -31,62 +33,32 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    const accessToken = window.localStorage.getItem('spotify_access_token');
-
-    if (accessToken && accessToken !== '') {
-      // this.getData(accessToken);
-      this.fetchUser(accessToken);
-      this.fetchPlaylists(accessToken);
+    // const accessToken = window.localStorage.getItem('spotify_access_token');
+    if (token) {
+      catchErrors(this.getData());
+      //this.fetchUser(accessToken);
+      this.fetchPlaylists(token);
     }
 
-    if (!accessToken || this.state.fetchError) {
-      return <Redirect to={{ pathname: '/' }} />;
+    if (!token || this.state.fetchError) {
+      return <Login />;
     }
   }
 
-  async getData(accessToken) {
-    const {
-      fetchError,
-      username,
-      userFollowers,
-      userUrl,
-      fetchingUser
-    } = await fetchUser();
+  async getData() {
+    const { user } = await getUserInfo();
+    //const playlistData = await getUserPlaylistsAndSongs(token);
+
+    //this.setState({ playlists: ownerPlaylists, fetchingPlaylists: false });
+
     this.setState({
-      accessToken,
       user: {
-        name: username,
-        followers: userFollowers,
-        url: userUrl
+        name: user.display_name ? user.display_name : user.id,
+        followers: user.followers.total,
+        url: user.external_urls.spotify
       },
-      fetchingUser,
-      fetchError
+      fetchingUser: false
     });
-  }
-
-  fetchUser(accessToken) {
-    fetch('https://api.spotify.com/v1/me', {
-      headers: { Authorization: 'Bearer ' + accessToken }
-    })
-      .then(response => response.json())
-      .then(data => {
-        if (data.error) {
-          this.setState({
-            fetchError: true
-          });
-          return <Redirect to={{ pathname: '/' }} />;
-        } else {
-          this.setState({
-            accessToken,
-            user: {
-              name: data.display_name ? data.display_name : data.id,
-              followers: data.followers.total,
-              url: data.external_urls.spotify
-            },
-            fetchingUser: false
-          });
-        }
-      });
   }
 
   fetchPlaylists(accessToken) {
@@ -132,14 +104,24 @@ class Dashboard extends Component {
       })
       .then(playlists => {
         if (playlists && playlists.length >= 0) {
+          let ownerPlaylists = [];
+          playlists.map(playlist => {
+            if (playlist.owner.id === this.state.user.name) {
+              ownerPlaylists.push(playlist);
+            }
+            return ownerPlaylists;
+          });
           this.setState({
-            playlists: playlists.map(item => {
+            playlists: ownerPlaylists.map(item => {
               return {
                 name: item.name,
-                imageUrl: item.images.find(image => image.width === 300).url,
+                imageUrl: item.images.find(
+                  image => image.width === 300 || image.width === 640
+                ).url,
                 songs: item.trackDatas.slice(0, 3),
                 totalTracks: item.tracks.total,
-                externalUrl: item.external_urls.spotify
+                externalUrl: item.external_urls.spotify,
+                id: item.id
               };
             }),
             fetchingPlaylists: false
@@ -168,46 +150,49 @@ class Dashboard extends Component {
     }
   }
 
+  logout() {
+    logout();
+    return <Redirect to={{ pathname: '/' }} />;
+  }
+
   renderPlaylists() {
-    const { user, playlists, fetchingUser, fetchingPlaylists } = this.state;
+    const { user, playlists } = this.state;
     let playlistToRender = this.filterPlaylists();
 
     return (
-      <Fragment>
-        {user && playlists && !fetchingUser && !fetchingPlaylists ? (
-          <div className="app-playlists">
-            <UserAvatar user={user} />
+      <div className="app-playlists">
+        <UserAvatar user={user.name} />
 
-            <div className="d-flex justify-content-center">
-              <PlaylistCounter playlists={playlistToRender} />
-              <HoursCounter playlists={playlistToRender} />
-              <Followers user={user} />
-            </div>
-            <button
-              className="btn btn-sm btn-white text-white round-corner font-weight-bold mt-4 mb-5 px-4 py-2"
-              onClick={logout}>
-              LOGOUT
-            </button>
-            <SearchFilter
-              onTextChange={text => this.setState({ filterString: text })}
-            />
-            <PlaylistListing
-              user={user}
-              playlists={playlists}
-              playlistToRender={playlistToRender}
-            />
-          </div>
-        ) : (
-          <Loader />
-        )}
-      </Fragment>
+        <div className="d-flex justify-content-center">
+          <PlaylistCounter playlists={playlistToRender} />
+          <HoursCounter playlists={playlistToRender} />
+          <Followers followers={user.followers} />
+        </div>
+        <button
+          className="btn btn-sm btn-white text-white round-corner font-weight-bold mt-4 mb-5 px-4 py-2"
+          onClick={() => this.logout()}>
+          LOGOUT
+        </button>
+        <SearchFilter
+          onTextChange={text => this.setState({ filterString: text })}
+        />
+        <PlaylistListing
+          user={user.name}
+          playlists={playlists}
+          playlistToRender={playlistToRender}
+        />
+      </div>
     );
   }
 
   render() {
-    const { accessToken } = this.state;
+    const { user, fetchingUser, fetchingPlaylists } = this.state;
 
-    return accessToken && accessToken !== '' && this.renderPlaylists();
+    return user !== '' && !fetchingUser && !fetchingPlaylists ? (
+      this.renderPlaylists()
+    ) : (
+      <Loader />
+    );
   }
 }
 
