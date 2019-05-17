@@ -3,6 +3,22 @@ export const formatString = string => {
   return string.charAt(0).toUpperCase() + string.toLowerCase().slice(1);
 };
 
+export const setPlaylistName = playlistString => {
+  return (
+    playlistString.charAt(0).toUpperCase() +
+    playlistString.toLowerCase().slice(1)
+  );
+};
+
+export const getTrackMinutesSeconds = trackDuration => {
+  let minutes = parseInt(Math.floor(trackDuration / 60));
+  let seconds = parseInt(trackDuration - minutes * 60);
+  if (seconds < 10) {
+    seconds = `0${seconds}`;
+  }
+  return `${minutes} : ${seconds}`;
+};
+
 // Get the query params off the window's URL
 export const getHashParams = () => {
   const hashParams = {};

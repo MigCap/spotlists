@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getToken } from '../spotify';
+import { token } from '../spotify';
 
 import './App.css';
 
@@ -8,17 +8,17 @@ import Profile from '../../components/Profile';
 
 class App extends Component {
   state = {
-    getToken: ''
+    token: ''
   };
 
   componentDidMount() {
-    this.setState({ getToken });
+    this.setState({ token });
   }
 
   render() {
-    const { getToken } = this.state;
+    const { token } = this.state;
 
-    return <div className="App">{getToken ? <Profile /> : <Login />}</div>;
+    return <div className="App">{token ? <Profile /> : <Login />}</div>;
   }
 }
 

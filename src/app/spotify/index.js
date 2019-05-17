@@ -1,10 +1,7 @@
 import axios from 'axios';
 import { getHashParams } from '../helpers';
 
-import queryString from 'query-string';
-
 // TOKENS ******************************************************************************************
-
 const EXPIRATION_TIME = 3600 * 1000; // 3600 seconds * 1000 = 1 hour in milliseconds
 
 const setTokenTimestamp = () =>
@@ -77,21 +74,6 @@ export const logout = () => {
   window.localStorage.removeItem('spotify_refresh_token');
   window.location.reload();
 };
-
-export const getAccToken = () => {
-  const localToken = getLocalAccessToken();
-  const parsed = queryString.parse(window.location.search);
-  const token = parsed.access_token;
-  if (localToken !== '' && localToken !== 'undefined') {
-    return localToken;
-  } else if (token && token !== '') {
-    window.localStorage.setItem('spotify_access_token', token);
-    return token;
-  } else {
-    return undefined;
-  }
-};
-export const getToken = getAccToken();
 
 // API CALLS ***************************************************************************************
 
@@ -363,41 +345,39 @@ export const getTrackInfo = trackId => {
 
 // MY METHODS *******************************************************
 
-export const fetchUser = accessToken => {
-  fetch('https://api.spotify.com/v1/me', {
-    headers: { Authorization: 'Bearer ' + accessToken }
-  })
-    .then(response => response.json())
-    .then(data => {
-      if (data.error) {
-        return { fetchError: data.error };
-      } else {
-        return {
-          username: data.display_name ? data.display_name : data.id,
-          userFollowers: data.followers.total,
-          userUrl: data.external_urls.spotify,
-          fetchingUser: false
-        };
-      }
-    });
-};
+/* export const getUserOwnPlaylistsAndSongs = () => {
+  return axios.all([getUser(), getPlaylists()]).then(
+    axios.spread((user, data) => {
+      const playlists = data.data.items;
+      const userId = user.data.id;
+      let ownerPlaylists = [];
 
-/* export const fetchPlaylists = (accessToken) => {
+      playlists.map(playlist => {
+        if (playlist.owner.id === userId) {
+          ownerPlaylists.push(playlist);
+        }
+      });
+
+      return { ownerPlaylists };
+    })
+  );
+}; */
+
+export const getUserPlaylistsAndSongs = token => {
   fetch('https://api.spotify.com/v1/me/playlists', {
-    headers: { Authorization: 'Bearer ' + accessToken }
+    headers: { Authorization: 'Bearer ' + token }
   })
     .then(response => response.json())
     .then(playlistData => {
       if (playlistData.error) {
-        this.setState({
+        return {
           fetchError: true
-        });
-        return <Redirect to={{ pathname: '/' }} />;
+        };
       } else {
         let playlists = playlistData.items;
         let trackDataPromises = playlists.map(playlist => {
           let responsePromise = fetch(playlist.tracks.href, {
-            headers: { Authorization: 'Bearer ' + accessToken }
+            headers: { Authorization: 'Bearer ' + token }
           });
           let trackDataPromise = responsePromise.then(response =>
             response.json()
@@ -424,19 +404,8 @@ export const fetchUser = accessToken => {
       }
     })
     .then(playlists => {
-      if (playlists && playlists.length >= 0) {
-        this.setState({
-          playlists: playlists.map(item => {
-            return {
-              name: item.name,
-              imageUrl: item.images.find(image => image.width === 300).url,
-              songs: item.trackDatas.slice(0, 3),
-              totalTracks: item.tracks.total,
-              externalUrl: item.external_urls.spotify
-            };
-          }),
-          fetchingPlaylists: false
-        });
-      }
+      console.log(playlists);
+
+      return playlists;
     });
-} */
+};

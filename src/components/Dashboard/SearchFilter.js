@@ -5,7 +5,7 @@ export default class SearchFilter extends Component {
     const { onTextChange } = this.props;
 
     return (
-      <div className="container mt-2 mx-auto">
+      <div className="pt-3 mx-auto sticky-search">
         <input
           className="form-control form-control-sm mx-auto pt-1 pb-2 round-corner"
           type="text"
