@@ -8,7 +8,7 @@ export default function PlaylistListing(props) {
   return (
     <div className="playlists-container">
       <div className="row align-items-center justify-content-start no-gutters pt-2 pb-4">
-        <div className="col-12 align-self-center pt-4">
+        <div className="col-12 align-self-center py-4">
           <h3 className="text-white font-weight-bold pt-lg-5">
             Your Playlists
           </h3>
