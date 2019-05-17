@@ -8,7 +8,7 @@ class PlaylistCard extends Component {
     const { playlist } = this.props;
     return (
       <div className="row justify-content-center no-gutters pb-3">
-        <div className="col-4 col-md-2 align-self-start pt-1">
+        <div className="col-4 col-md-2 align-self-start pt-1 pr-2">
           <Link
             to={playlist.id}
             alt={`Spotify Playlist: ${setPlaylistName(playlist.name)}`}>
@@ -39,7 +39,7 @@ class PlaylistCard extends Component {
             <div className="col-11 col-md-12">
               {playlist.songs.map((song, index) => (
                 <div className="row pb-2" key={index}>
-                  <div className="col-10 col-sm-7 col-md-9">
+                  <div className="col-10 col-sm-10 col-md-10">
                     <div>
                       <p className="small-font m-0">
                         <span className="text-white">{song.trackName}</span>
@@ -49,7 +49,7 @@ class PlaylistCard extends Component {
                       </p>
                     </div>
                   </div>
-                  <div className="col-2 col-sm-5 col-md-3 pl-0 align-self-start">
+                  <div className="col-2 col-sm-2 col-md-2 pl-0 align-self-start">
                     <p className="text-muted text-right small-font m-0 p-0">
                       {getTrackMinutesSeconds(song.duration)}
                     </p>

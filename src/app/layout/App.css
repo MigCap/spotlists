@@ -28,7 +28,7 @@ body {
 a {
   transition: all 0.2s ease-in-out; }
   a:hover {
-    color: #1ed760 !important;
+    color: #9b9b9b !important;
     text-decoration: none !important; }
 
 div.no-border {
@@ -39,11 +39,19 @@ div.no-border {
     background-color: transparent; }
 
 .small-font {
-  font-size: 0.8em;
+  font-size: 0.7em;
   color: #9b9b9b; }
   @media (max-width: 599px) {
     .small-font {
       font-size: 0.8em; } }
+
+div.app-dashboard {
+  text-align: center;
+  padding-bottom: 80px; }
+  @media (min-width: 900px) {
+    div.app-dashboard {
+      padding: 20px 0;
+      margin-left: 70px; } }
 
 div.app-playlists {
   text-align: center;
@@ -66,7 +74,7 @@ div.app-login {
 button.round-corner {
   border-radius: 50px;
   font-size: 1em; }
-  @media (min-width: 764px) {
+  @media (min-width: 767px) {
     button.round-corner {
       font-size: 1.2em; } }
 
@@ -163,7 +171,7 @@ ul.navegacion {
       align-items: center;
       flex-direction: column;
       padding: 10px 0; }
-      @media (min-width: 764px) {
+      @media (min-width: 767px) {
         ul.navegacion li a {
           border-top: 3px solid transparent !important; } }
       @media (min-width: 900px) {
@@ -213,7 +221,7 @@ ul.navegacion {
       height: 5em;
       border: solid white 2px;
       border-radius: 100px; } }
-  @media (min-width: 764px) {
+  @media (min-width: 767px) {
     .avatar {
       width: 5em;
       height: 5em;
@@ -235,7 +243,7 @@ ul.navegacion {
 #user-icon {
   width: 3em;
   fill: white; }
-  @media (min-width: 764px) {
+  @media (min-width: 767px) {
     #user-icon {
       width: 3em; } }
   @media (min-width: 900px) {
@@ -272,7 +280,7 @@ input.round-corner {
   @media (max-width: 599px) {
     input.round-corner {
       max-width: 75%; } }
-  @media (min-width: 764px) {
+  @media (min-width: 767px) {
     input.round-corner {
       max-width: 50%; } }
   @media (min-width: 900px) {
@@ -302,16 +310,13 @@ input[type='text']::placeholder {
   .playlist-img:hover {
     transition: all 0.2s ease-in-out;
     opacity: 0.8; }
-  @media (min-width: 764px) {
+  @media (min-width: 767px) {
     .playlist-img {
       display: inline-block;
-      width: 85%;
-      height: 85%; } }
-  @media (min-width: 900px) {
+      width: 95%; } }
+  @media (min-width: 1200px) {
     .playlist-img {
-      display: inline-block;
-      width: 80%;
-      height: 80%; } }
+      width: 90%; } }
 
 .playlists-grid {
   display: grid;
@@ -320,6 +325,23 @@ input[type='text']::placeholder {
   .playlists-grid img {
     width: 100%;
     height: auto; }
+
+.artists-img {
+  display: none;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: all 0.2s ease-in-out; }
+  .artists-img:hover {
+    transition: all 0.2s ease-in-out;
+    opacity: 0.8; }
+  @media (min-width: 767px) {
+    .artists-img {
+      display: inline-block; } }
+  @media (min-width: 1200px) {
+    .artists-img {
+      width: 80px; } }
 
 .img-loading-overlay {
   background-color: #181818;

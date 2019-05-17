@@ -31,6 +31,7 @@ const refreshAccessToken = async () => {
     return;
   } catch (e) {
     console.error(e);
+    //logout();
   }
 };
 
@@ -72,7 +73,7 @@ export const logout = () => {
   window.localStorage.removeItem('spotify_token_timestamp');
   window.localStorage.removeItem('spotify_access_token');
   window.localStorage.removeItem('spotify_refresh_token');
-  window.location.reload();
+  //window.location.reload();
 };
 
 // API CALLS ***************************************************************************************
