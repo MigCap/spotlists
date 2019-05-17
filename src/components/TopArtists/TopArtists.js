@@ -10,10 +10,13 @@ import { catchErrors } from '../../app/helpers';
 
 import { IconMusic } from '../icons';
 
+import Loader from '../Loader/Loader';
+
 class TopArtists extends Component {
   state = {
-    topArtists: [],
-    activeRange: 'long'
+    topArtists: null,
+    activeRange: 'long',
+    isFetching: true
   };
 
   apiCalls = {
@@ -28,7 +31,7 @@ class TopArtists extends Component {
 
   async getData() {
     const { data } = await getTopArtistsMedium();
-    this.setState({ topArtists: data.items });
+    this.setState({ topArtists: data.items, isFetching: false });
   }
 
   async changeRange(range) {
@@ -39,19 +42,21 @@ class TopArtists extends Component {
   setActiveRange = range => catchErrors(this.changeRange(range));
 
   render() {
-    const { topArtists } = this.state;
+    const { topArtists, isFetching } = this.state;
     return (
       <div className="app-playlists">
         <h1 className="text-muted text-center py-4 pb-5">Top Artists</h1>
 
-        {topArtists &&
+        {topArtists && !isFetching ? (
           topArtists.map(({ id, name, images, followers, genres }, i) => {
             return (
               <div
                 className="row align-items-center justify-content-end no-gutters pb-4"
                 key={i}>
                 <div className="col-2">
-                  <Link className="playlist-img-container pl-2" to={id}>
+                  <Link
+                    className="playlist-img-container pl-2"
+                    to={`/artist/${id}`}>
                     {images.length ? (
                       <img
                         className="rounded-circle artists-img"
@@ -59,26 +64,26 @@ class TopArtists extends Component {
                         alt={name}
                       />
                     ) : (
-                      <div>
-                        <div>
-                          <IconMusic />
-                        </div>
+                      <div className="icon-music">
+                        <IconMusic />
                       </div>
                     )}
                   </Link>
                 </div>
                 <div className="col-10 align-self-center text-left">
-                  <Link to={id}>
+                  <Link to={`/artist/${id}`}>
                     <p className="text-white m-0 p-0">
-                      {name} -{' '}
+                      {name} ·{' '}
                       {genres &&
                         genres.map((genre, i) => {
                           if (i <= 2) {
                             return (
-                              <span className="text-muted small-font">
+                              <span className="text-muted small-font" key={i}>
                                 {genre} |{' '}
                               </span>
                             );
+                          } else {
+                            return '';
                           }
                         })}
                     </p>
@@ -90,7 +95,10 @@ class TopArtists extends Component {
                 </div>
               </div>
             );
-          })}
+          })
+        ) : (
+          <Loader />
+        )}
       </div>
     );
   }
