@@ -45,7 +45,7 @@ class TopArtists extends Component {
     const { topArtists, isFetching } = this.state;
     return (
       <div className="app-playlists">
-        <h1 className="text-muted text-center py-4 pb-5">Top Artists</h1>
+        <h2 className="text-white text-center py-4 pb-5">Top Artists</h2>
 
         {topArtists && !isFetching ? (
           topArtists.map(({ id, name, images, followers, genres }, i) => {
@@ -53,7 +53,7 @@ class TopArtists extends Component {
               <div
                 className="row align-items-center justify-content-end no-gutters pb-4"
                 key={i}>
-                <div className="col-2">
+                <div className="col-4 col-sm-2">
                   <Link
                     className="playlist-img-container pl-2"
                     to={`/artist/${id}`}>
@@ -70,7 +70,7 @@ class TopArtists extends Component {
                     )}
                   </Link>
                 </div>
-                <div className="col-10 align-self-center text-left">
+                <div className="col-8 col-sm-10 align-self-center text-left pr-2">
                   <Link to={`/artist/${id}`}>
                     <p className="text-white m-0 p-0">
                       {name} ·{' '}
