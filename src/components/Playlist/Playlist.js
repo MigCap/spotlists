@@ -17,7 +17,6 @@ export default class Playlist extends Component {
     const { playlistId } = this.props.match.params;
     const { data } = await getPlaylist(playlistId);
     this.setState({ playlist: data });
-    console.log(this.state.playlist);
 
     if (data) {
       const { playlist } = this.state;
@@ -28,7 +27,7 @@ export default class Playlist extends Component {
   render() {
     return (
       <div>
-        <h1 className="text-muted text-center mt-5">Playlist</h1>
+        <h1 className="text-muted text-center mt-5">Playlist Detail</h1>
       </div>
     );
   }

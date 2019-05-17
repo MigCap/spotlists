@@ -326,6 +326,10 @@ input[type='text']::placeholder {
     width: 100%;
     height: auto; }
 
+.playlists-imgs:hover {
+  transition: all 0.2s ease-in-out;
+  opacity: 0.5; }
+
 .artists-img {
   display: none;
   width: 80px;
@@ -342,6 +346,11 @@ input[type='text']::placeholder {
   @media (min-width: 1200px) {
     .artists-img {
       width: 80px; } }
+
+.icon-music svg {
+  fill: #9b9b9b;
+  width: 75px;
+  height: 75px; }
 
 .img-loading-overlay {
   background-color: #181818;

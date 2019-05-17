@@ -4,7 +4,7 @@ class TopTracks extends Component {
   render() {
     return (
       <div className="app-playlists">
-        <h1 className="text-muted text-center mt-5">TopTracks</h1>
+        <h1 className="text-muted text-center mt-5">Top Tracks</h1>
       </div>
     );
   }

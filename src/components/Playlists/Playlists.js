@@ -28,20 +28,24 @@ class Playlists extends Component {
     // console.log(playlists);
     return (
       <div className="app-playlists px-5">
-        <h1 className="text-muted text-center my-5">Your Playlists</h1>
+        <h2 className="text-muted text-center mt-2 mb-5">Your Playlists</h2>
         <div className="playlists-wrapper">
           <div className="playlists-grid">
             {playlists && !isFetching ? (
               playlists.items.map(({ id, images, name, tracks }, i) => (
                 <div className="playlist-container" key={i}>
-                  <Link className="playlist-img-container" to={id}>
+                  <Link
+                    className="playlist-img-container"
+                    to={`/playlists/${id}`}>
                     {images.length ? (
-                      <img src={images[0].url} alt="Album Art" />
+                      <img
+                        className="playlists-imgs"
+                        src={images[0].url}
+                        alt="Album Art"
+                      />
                     ) : (
                       <div>
-                        <div>
-                          <IconMusic />
-                        </div>
+                        <IconMusic />
                       </div>
                     )}
                     <div className="playlists-mask">
@@ -50,13 +54,13 @@ class Playlists extends Component {
                   </Link>
                   <div className="pt-2">
                     <Link
-                      className="playlist-name d-inline-block text-white text-truncate"
-                      to={id}>
+                      className="playlist-name d-inline-block text-white m-0 p-0"
+                      to={`/playlists/${id}`}>
                       {name}
                     </Link>
-                    <div className="playlist-totaltracks text-muted">
+                    <p className="playlist-totaltracks text-muted small-font m-0 p-0">
                       {tracks.total} Tracks
-                    </div>
+                    </p>
                   </div>
                 </div>
               ))
