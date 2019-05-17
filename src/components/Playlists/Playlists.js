@@ -28,13 +28,13 @@ class Playlists extends Component {
     // console.log(playlists);
     return (
       <div className="app-playlists px-5">
-        <h1 className="text-white text-center my-5">Your Playlists</h1>
+        <h1 className="text-muted text-center my-5">Your Playlists</h1>
         <div className="playlists-wrapper">
           <div className="playlists-grid">
             {playlists && !isFetching ? (
               playlists.items.map(({ id, images, name, tracks }, i) => (
                 <div className="playlist-container" key={i}>
-                  <div className="playlist-img-container" to={id}>
+                  <Link className="playlist-img-container" to={id}>
                     {images.length ? (
                       <img src={images[0].url} alt="Album Art" />
                     ) : (
@@ -47,7 +47,7 @@ class Playlists extends Component {
                     <div className="playlists-mask">
                       <i className="fas fa-info-circle" />
                     </div>
-                  </div>
+                  </Link>
                   <div className="pt-2">
                     <Link
                       className="playlist-name d-inline-block text-white text-truncate"

@@ -160,7 +160,7 @@ class Dashboard extends Component {
     let playlistToRender = this.filterPlaylists();
 
     return (
-      <div className="app-playlists">
+      <div className="app-dashboard">
         <UserAvatar user={user.name} />
 
         <div className="d-flex justify-content-center">
