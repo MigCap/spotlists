@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import { getPlaylists } from '../../app/spotify';
-import { catchErrors } from '../../app/helpers';
+import { catchErrors, setPlaylistName } from '../../app/helpers';
 
 import { IconMusic } from '../icons';
 
@@ -28,7 +28,9 @@ class Playlists extends Component {
     // console.log(playlists);
     return (
       <div className="app-playlists px-5">
-        <h2 className="text-white text-center py-4 pb-4">Your Playlists</h2>
+        <h2 className="title-font text-white text-center py-4 pb-4">
+          Your Playlists
+        </h2>
         <div className="playlists-wrapper">
           <div className="playlists-grid">
             {playlists && !isFetching ? (
@@ -54,9 +56,9 @@ class Playlists extends Component {
                   </Link>
                   <div className="pt-2">
                     <Link
-                      className="playlist-name d-inline-block text-white text-uppercase m-0 p-0"
+                      className="playlist-name d-inline-block text-white m-0 p-0"
                       to={`/playlists/${id}`}>
-                      {name}
+                      {setPlaylistName(name)}
                     </Link>
                     <p className="playlist-totaltracks text-muted small-font m-0 p-0">
                       {tracks.total} Tracks

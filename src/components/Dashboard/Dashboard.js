@@ -130,6 +130,13 @@ class Dashboard extends Component {
       });
   }
 
+  handleLogout() {
+    window.localStorage.removeItem('spotify_token_timestamp');
+    window.localStorage.removeItem('spotify_access_token');
+    window.localStorage.removeItem('spotify_refresh_token');
+    window.location.href = '/';
+  }
+
   filterPlaylists() {
     const { user, playlists } = this.state;
 
@@ -150,11 +157,6 @@ class Dashboard extends Component {
     }
   }
 
-  logout() {
-    logout();
-    return <Redirect to={{ pathname: '/' }} />;
-  }
-
   renderPlaylists() {
     const { user, playlists } = this.state;
     let playlistToRender = this.filterPlaylists();
@@ -170,9 +172,16 @@ class Dashboard extends Component {
         </div>
         <button
           className="btn btn-sm btn-white text-white round-corner font-weight-bold mt-4 mb-5 px-4 py-2"
-          onClick={() => this.logout()}>
+          onClick={() => this.handleLogout()}>
           LOGOUT
         </button>
+        <div className="row align-items-center justify-content-start no-gutters pb-4">
+          <div className="col-12 align-self-center">
+            <h2 className="title-font text-white font-weight-bold">
+              Your Playlists
+            </h2>
+          </div>
+        </div>
         <SearchFilter
           onTextChange={text => this.setState({ filterString: text })}
         />

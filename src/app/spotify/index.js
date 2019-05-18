@@ -31,7 +31,7 @@ const refreshAccessToken = async () => {
     return;
   } catch (e) {
     console.error(e);
-    //logout();
+    logout();
   }
 };
 

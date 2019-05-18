@@ -6,6 +6,7 @@ import Dashboard from './Dashboard/Dashboard';
 import TopArtists from './TopArtists/TopArtists';
 import Artist from './Artist/Artist';
 import TopTracks from './TopTracks/TopTracks';
+import Album from './Album/Album';
 import Recent from './Recent/Recent';
 import Playlists from './Playlists/Playlists';
 import Playlist from './Playlist/Playlist';
@@ -18,12 +19,13 @@ class Profile extends Component {
           <NavBar />
           <Switch>
             <Route exact path="/" component={Dashboard} />
-            <Route exact path="/top-artists" component={TopArtists} />
-            <Route exact path="/top-tracks" component={TopTracks} />
-            <Route exact path="/recent" component={Recent} />
-            <Route exact path="/playlists" component={Playlists} />
-            <Route exact path="/artist/:artistId" component={Artist} />
-            <Route exact path="/playlists/:playlistId" component={Playlist} />
+            <Route path="/top-artists" component={TopArtists} />
+            <Route path="/top-tracks" component={TopTracks} />
+            <Route path="/recent" component={Recent} />
+            <Route path="/playlists" component={Playlists} />
+            <Route path="/artist/:artistId" component={Artist} />
+            <Route path="/album/:albumId" component={Album} />
+            <Route path="/playlists/:playlistId" component={Playlist} />
           </Switch>
         </Fragment>
       </BrowserRouter>
