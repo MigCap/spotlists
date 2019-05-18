@@ -31,7 +31,6 @@ const refreshAccessToken = async () => {
     return;
   } catch (e) {
     console.error(e);
-    logout();
   }
 };
 
@@ -405,8 +404,6 @@ export const getUserPlaylistsAndSongs = token => {
       }
     })
     .then(playlists => {
-      console.log(playlists);
-
       return playlists;
     });
 };

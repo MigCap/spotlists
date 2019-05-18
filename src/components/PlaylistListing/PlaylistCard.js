@@ -10,7 +10,7 @@ class PlaylistCard extends Component {
       <div className="row justify-content-center no-gutters pb-3">
         <div className="col-4 col-md-2 align-self-start pt-1 pr-2">
           <Link
-            to={playlist.id}
+            to={`/playlists/${playlist.id}`}
             alt={`Spotify Playlist: ${setPlaylistName(playlist.name)}`}>
             <img
               className="playlist-img"
@@ -24,7 +24,7 @@ class PlaylistCard extends Component {
             <div className="col-11 col-md-12">
               <div className="text-white font-weight-bold pb-1">
                 <Link
-                  to={playlist.id}
+                  to={`/playlists/${playlist.id}`}
                   alt={`Spotify Playlist: ${setPlaylistName(playlist.name)}`}
                   className="text-white font-weight-bold">
                   {setPlaylistName(playlist.name)}{' '}

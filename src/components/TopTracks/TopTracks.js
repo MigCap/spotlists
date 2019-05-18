@@ -30,7 +30,6 @@ class TopTracks extends Component {
 
   async getData() {
     const { data } = await getTopTracksLong();
-    console.log(data.items);
     this.setState({ topTracks: data.items, isFetching: false });
   }
 
@@ -46,11 +45,11 @@ class TopTracks extends Component {
 
     return (
       <div className="app-playlists">
-        <h2 className="title-font text-white text-center py-4 pb-3">
+        <h2 className="title-font text-white text-center py-4 pb-5">
           Top Tracks
         </h2>
 
-        <div className="tracks-range text-center text-md-right pb-3 px-4">
+        <div className="tracks-range text-center text-md-right pb-5 px-4">
           <button
             className={
               activeRange === 'long' ? 'buttons-range-active' : 'buttons-range'
@@ -82,7 +81,7 @@ class TopTracks extends Component {
               <div
                 className="row align-items-center justify-content-end no-gutters tracks-names pb-4"
                 key={i}>
-                <div className="col-4 col-sm-2">
+                <div className="col-2 col-sm-2 align-self-start">
                   <Link
                     className="playlist-img-container pl-2"
                     to={`/album/${album.id}`}>
@@ -99,17 +98,20 @@ class TopTracks extends Component {
                     )}
                   </Link>
                 </div>
-                <div className="col-8 col-sm-10 align-self-center text-left pr-2">
+                <div className="col-8 col-sm-8 align-self-start text-left pl-2 pr-2">
                   <p className="m-0 p-0 text-white"> {name} </p>
-                  <p className="m-0 p-0 text-muted small font">
-                    <Link to={`/artist/${artists.id}`} className="text-muted">
+                  <p className="m-0 p-0 text-muted">
+                    <Link
+                      to={`/artist/${artists[0].id}`}
+                      className="text-muted">
                       {artists[0].name}
                     </Link>{' '}
                     - {album.name}
-                    <span className="d-block text-right pr-3">
-                      {' '}
-                      {formatDuration(duration_ms)}{' '}
-                    </span>
+                  </p>
+                </div>
+                <div className="col-2 col-sm-2 align-self-start">
+                  <p className="d-block text-muted text-center small-font">
+                    {formatDuration(duration_ms)}{' '}
                   </p>
                 </div>
               </div>

@@ -25,7 +25,7 @@ class Playlists extends Component {
 
   render() {
     const { playlists, isFetching } = this.state;
-    // console.log(playlists);
+
     return (
       <div className="app-playlists px-5">
         <h2 className="title-font text-white text-center py-4 pb-4">
@@ -35,7 +35,7 @@ class Playlists extends Component {
           <div className="playlists-grid">
             {playlists && !isFetching ? (
               playlists.items.map(({ id, images, name, tracks }, i) => (
-                <div className="playlist-container" key={i}>
+                <div className="playlists-container" key={i}>
                   <Link
                     className="playlist-img-container"
                     to={`/playlists/${id}`}>
