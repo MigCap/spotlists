@@ -6,15 +6,7 @@ export default function PlaylistListing(props) {
   const { playlistToRender } = props;
 
   return (
-    <div className="playlists-container">
-      <div className="row align-items-center justify-content-start no-gutters pt-2 pb-4">
-        <div className="col-12 align-self-center py-4">
-          <h3 className="text-white font-weight-bold pt-lg-5">
-            Your Playlists
-          </h3>
-        </div>
-      </div>
-
+    <div className="playlists-container pt-5">
       {playlistToRender && playlistToRender.length !== 0 ? (
         playlistToRender.map((playlist, index) => (
           <PlaylistCard playlist={playlist} key={index} />

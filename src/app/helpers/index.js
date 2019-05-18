@@ -38,6 +38,9 @@ export const formatDuration = millis => {
   return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 };
 
+export const formatWithCommas = n =>
+  n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
 // Higher-order function for async/await error handling
 export const catchErrors = fn => {
   return function(...args) {
