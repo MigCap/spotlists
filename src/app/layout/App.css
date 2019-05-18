@@ -51,7 +51,7 @@ div.no-border {
 div.app-dashboard {
   text-align: center;
   padding-bottom: 80px; }
-  @media (min-width: 900px) {
+  @media (min-width: 990px) {
     div.app-dashboard {
       padding: 20px 0;
       margin-left: 70px; } }
@@ -59,7 +59,7 @@ div.app-dashboard {
 div.app-playlists {
   text-align: center;
   padding-bottom: 80px; }
-  @media (min-width: 900px) {
+  @media (min-width: 990px) {
     div.app-playlists {
       padding: 20px 0;
       margin-left: 90px; } }
@@ -94,6 +94,46 @@ button.buttons-range-active {
   cursor: pointer;
   transition: all 0.2s ease-in-out; }
   button.buttons-range-active:focus {
+    outline: none; }
+
+a.btn-custom {
+  display: inline-block;
+  margin: 10px;
+  padding: 11px 20px;
+  font-size: 0.9em;
+  font-weight: 900;
+  color: white;
+  background-color: #1ed760;
+  border: solid 1px #1ed760;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out; }
+  a.btn-custom:hover {
+    color: white !important;
+    background-color: transparent;
+    border: solid 1px white;
+    outline: 0; }
+  a.btn-custom:focus {
+    outline: none; }
+
+button.btn-custom {
+  display: inline-block;
+  margin: 10px;
+  padding: 11px 20px;
+  font-size: 0.9em;
+  font-weight: 900;
+  color: white;
+  background-color: #1ed760;
+  border: solid 1px #1ed760;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out; }
+  button.btn-custom:hover {
+    color: white !important;
+    background-color: transparent;
+    border: solid 1px white;
+    outline: 0; }
+  button.btn-custom:focus {
     outline: none; }
 
 div.app-login {
@@ -133,7 +173,7 @@ nav.navBar {
   z-index: 99;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 10px;
   background-color: #040306; }
-  @media (min-width: 900px) {
+  @media (min-width: 990px) {
     nav.navBar {
       -webkit-box-pack: justify;
       justify-content: space-between;
@@ -148,7 +188,7 @@ nav.navBar {
       text-align: center; } }
   nav.navBar .spotify-nav-icon {
     display: none; }
-    @media (min-width: 900px) {
+    @media (min-width: 990px) {
       nav.navBar .spotify-nav-icon {
         display: block;
         color: #9b9b9b;
@@ -164,7 +204,7 @@ nav.navBar {
       vertical-align: middle; }
   nav.navBar .github-icon {
     display: none; }
-    @media (min-width: 900px) {
+    @media (min-width: 990px) {
       nav.navBar .github-icon {
         display: block;
         width: 35px;
@@ -187,7 +227,7 @@ ul.navegacion {
   padding: 0px;
   margin: 0px;
   list-style: none; }
-  @media (min-width: 900px) {
+  @media (min-width: 990px) {
     ul.navegacion {
       flex-direction: column; } }
   ul.navegacion li {
@@ -209,7 +249,7 @@ ul.navegacion {
       @media (min-width: 767px) {
         ul.navegacion li a {
           border-top: 3px solid transparent !important; } }
-      @media (min-width: 900px) {
+      @media (min-width: 990px) {
         ul.navegacion li a {
           padding: 20px 0;
           border-top: 0px !important;
@@ -225,7 +265,7 @@ ul.navegacion {
         cursor: pointer;
         text-decoration: none;
         transition: all 0.25s cubic-bezier(0.3, 0, 0.4, 1) 0s; }
-        @media (min-width: 900px) {
+        @media (min-width: 990px) {
           ul.navegacion li a:hover {
             border-left: 3px solid #1ed760 !important;
             border-top: 0px !important; } }
@@ -234,7 +274,7 @@ ul.navegacion {
         border-left: 0px !important;
         border-top: 3px solid #1ed760 !important;
         background-color: #181818 !important; }
-        @media (min-width: 900px) {
+        @media (min-width: 990px) {
           ul.navegacion li a.active {
             border-left: 3px solid #1ed760 !important;
             border-top: 0px !important; } }
@@ -262,7 +302,7 @@ ul.navegacion {
       height: 5em;
       border: solid white 2px;
       border-radius: 100px; } }
-  @media (min-width: 900px) {
+  @media (min-width: 990px) {
     .avatar {
       width: 5em;
       height: 5em;
@@ -281,7 +321,7 @@ ul.navegacion {
   @media (min-width: 767px) {
     #user-icon {
       width: 3em; } }
-  @media (min-width: 900px) {
+  @media (min-width: 990px) {
     #user-icon {
       width: 3em; } }
   @media (min-width: 1200px) {
@@ -318,7 +358,7 @@ input.round-corner {
   @media (min-width: 767px) {
     input.round-corner {
       max-width: 50%; } }
-  @media (min-width: 900px) {
+  @media (min-width: 990px) {
     input.round-corner {
       max-width: 40%; } }
   @media (min-width: 1200px) {
@@ -376,6 +416,63 @@ input[type='text']::placeholder {
   letter-spacing: -1px;
   font-weight: 700; }
 
+/* .playlist-container {
+    display: flex;
+    @include for-phone-only {
+        display: block;
+    }
+} */
+.playlist-left {
+  width: 30%;
+  text-align: center;
+  min-width: 200px;
+  padding: 30px 0 30px 0; }
+  @media (min-width: 767px) {
+    .playlist-left {
+      width: 100%; } }
+  .playlist-left .playlist-cover {
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto; }
+    .playlist-left .playlist-cover img {
+      width: 100%;
+      max-width: 250px; }
+  .playlist-left .playlist-title {
+    display: block;
+    font-weight: 800;
+    letter-spacing: -1px; }
+
+/* .playlist-right {
+    flex-grow: 1;
+    margin-left: 50px;
+} */
+.trackArtwork img {
+  max-width: 80%; }
+
+/* .trackContainer {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    margin-bottom: 10px;
+    &:hover,
+    &:focus {
+        opacity: 1;
+    }
+}
+
+.trackArtwork {
+    display: inline-block;
+    position: relative;
+    width: 50px;
+    min-width: 50px;
+    margin-right: 10px;
+}
+
+.trackMeta {
+    display: grid;
+    grid-template-columns: 1fr max-content;
+    grid-gap: 10px;
+} */
 .artists-img {
   display: inline-block;
   width: 80px;
@@ -418,8 +515,8 @@ input[type='text']::placeholder {
 
 .album-track-img {
   display: inline-block;
-  width: 80px;
-  height: 80px;
+  width: 80%;
+  height: 80%;
   object-fit: cover;
   transition: all 0.2s ease-in-out; }
   .album-track-img:hover {
@@ -433,7 +530,10 @@ input[type='text']::placeholder {
       display: inline-block; } }
   @media (min-width: 1200px) {
     .album-track-img {
-      width: 80px; } }
+      width: 80%; } }
+
+.artist-cover img {
+  max-width: 100%; }
 
 .img-loading-overlay {
   background-color: #181818;
@@ -455,7 +555,7 @@ input[type='text']::placeholder {
   left: 0;
   bottom: 0;
   right: 0; }
-  @media (min-width: 900px) {
+  @media (min-width: 990px) {
     .img-spinning-circle {
       left: 80px; } }
 
