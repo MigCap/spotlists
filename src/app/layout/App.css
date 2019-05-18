@@ -322,13 +322,20 @@ input[type='text']::placeholder {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
   grid-gap: 1em; }
-  .playlists-grid img {
-    width: 100%;
-    height: auto; }
 
-.playlists-imgs:hover {
-  transition: all 0.2s ease-in-out;
-  opacity: 0.5; }
+.playlists-imgs {
+  width: 90%;
+  height: auto; }
+  .playlists-imgs:hover {
+    transition: all 0.2s ease-in-out;
+    opacity: 0.5; }
+  @media (min-width: 767px) {
+    .playlists-imgs {
+      display: inline-block;
+      width: 95%; } }
+  @media (min-width: 1200px) {
+    .playlists-imgs {
+      width: 90%; } }
 
 .artists-img {
   display: none;
@@ -340,6 +347,9 @@ input[type='text']::placeholder {
   .artists-img:hover {
     transition: all 0.2s ease-in-out;
     opacity: 0.8; }
+  @media (max-width: 599px) {
+    .artists-img {
+      display: inline-block; } }
   @media (min-width: 767px) {
     .artists-img {
       display: inline-block; } }
@@ -348,9 +358,18 @@ input[type='text']::placeholder {
       width: 80px; } }
 
 .icon-music svg {
+  display: none;
   fill: #9b9b9b;
   width: 75px;
   height: 75px; }
+
+@media (min-width: 767px) {
+  .icon-music {
+    display: inline-block; } }
+
+@media (min-width: 1200px) {
+  .icon-music {
+    width: 80px; } }
 
 .img-loading-overlay {
   background-color: #181818;

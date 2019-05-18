@@ -28,7 +28,7 @@ class Playlists extends Component {
     // console.log(playlists);
     return (
       <div className="app-playlists px-5">
-        <h2 className="text-muted text-center mt-2 mb-5">Your Playlists</h2>
+        <h2 className="text-white text-center py-4 pb-4">Your Playlists</h2>
         <div className="playlists-wrapper">
           <div className="playlists-grid">
             {playlists && !isFetching ? (
@@ -54,7 +54,7 @@ class Playlists extends Component {
                   </Link>
                   <div className="pt-2">
                     <Link
-                      className="playlist-name d-inline-block text-white m-0 p-0"
+                      className="playlist-name d-inline-block text-white text-uppercase m-0 p-0"
                       to={`/playlists/${id}`}>
                       {name}
                     </Link>
