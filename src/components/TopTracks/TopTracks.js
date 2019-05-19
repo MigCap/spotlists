@@ -102,7 +102,10 @@ class TopTracks extends Component {
                   <p className="m-0 p-0 text-white"> {name} </p>
                   <p className="m-0 p-0 text-muted">
                     <Link
-                      to={`/artist/${artists[0].id}`}
+                      to={{
+                        pathname: `/artist/${artists[0].id}`,
+                        state: { artistName: artists[0].name }
+                      }}
                       className="text-muted">
                       {artists[0].name}
                     </Link>{' '}

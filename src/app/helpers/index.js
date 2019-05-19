@@ -3,6 +3,13 @@ export const formatString = string => {
   return string.charAt(0).toUpperCase() + string.toLowerCase().slice(1);
 };
 
+// Clear Last FM Artists Bio Strings
+export const clearString = string => {
+  let characterToDeleteFrom = string.indexOf('<a');
+  let cleanString = string.slice(0, characterToDeleteFrom);
+  return cleanString;
+};
+
 export const setPlaylistName = playlistString => {
   return (
     playlistString.charAt(0).toUpperCase() +
