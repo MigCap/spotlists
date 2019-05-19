@@ -166,6 +166,36 @@ export const getArtist = artistId =>
   axios.get(`https://api.spotify.com/v1/artists/${artistId}`, { headers });
 
 /**
+ * Get an Artist Biography
+ * https://developer.spotify.com/documentation/web-api/reference/artists/get-artist/
+ */
+/* export const getArtistBio = artistName => {
+  axios
+    .get(
+      `http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=${artistName}&api_key=${
+        process.env.REACT_APP_LAST_FM_KEY
+      }&format=json`
+    )
+    .then(response => {
+      //console.log(response.data.artist.bio);
+      const artistBio = response.data.artist.bio;
+      return artistBio;
+    });
+}; */
+
+export const getArtistBio = artistName => {
+  try {
+    return axios.get(
+      `http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=${artistName}&api_key=${
+        process.env.REACT_APP_LAST_FM_KEY
+      }&format=json`
+    );
+  } catch (error) {
+    return error;
+  }
+};
+
+/**
  * Follow an Artist
  * https://developer.spotify.com/documentation/web-api/reference/follow/follow-artists-users/
  */
@@ -341,69 +371,4 @@ export const getTrackInfo = trackId => {
         };
       })
     );
-};
-
-// MY METHODS *******************************************************
-
-/* export const getUserOwnPlaylistsAndSongs = () => {
-  return axios.all([getUser(), getPlaylists()]).then(
-    axios.spread((user, data) => {
-      const playlists = data.data.items;
-      const userId = user.data.id;
-      let ownerPlaylists = [];
-
-      playlists.map(playlist => {
-        if (playlist.owner.id === userId) {
-          ownerPlaylists.push(playlist);
-        }
-      });
-
-      return { ownerPlaylists };
-    })
-  );
-}; */
-
-export const getUserPlaylistsAndSongs = token => {
-  fetch('https://api.spotify.com/v1/me/playlists', {
-    headers: { Authorization: 'Bearer ' + token }
-  })
-    .then(response => response.json())
-    .then(playlistData => {
-      if (playlistData.error) {
-        return {
-          fetchError: true
-        };
-      } else {
-        let playlists = playlistData.items;
-        let trackDataPromises = playlists.map(playlist => {
-          let responsePromise = fetch(playlist.tracks.href, {
-            headers: { Authorization: 'Bearer ' + token }
-          });
-          let trackDataPromise = responsePromise.then(response =>
-            response.json()
-          );
-          return trackDataPromise;
-        });
-
-        let allTracksDataPromises = Promise.all(trackDataPromises);
-
-        let playlistsPromise = allTracksDataPromises.then(trackDatas => {
-          trackDatas.forEach((trackData, i) => {
-            playlists[i].trackDatas = trackData.items
-              .map(item => item.track)
-              .map(trackData => ({
-                artistName: trackData.artists[0].name,
-                albumTitle: trackData.album.name,
-                trackName: trackData.name,
-                duration: trackData.duration_ms / 1000
-              }));
-          });
-          return playlists;
-        });
-        return playlistsPromise;
-      }
-    })
-    .then(playlists => {
-      return playlists;
-    });
 };

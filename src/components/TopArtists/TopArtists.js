@@ -100,7 +100,12 @@ class TopArtists extends Component {
                 </div>
                 <div className="col-8 col-sm-10 align-self-center text-left pr-2">
                   <p className="text-white m-0 p-0">
-                    <Link className="text-white" to={`/artist/${id}`}>
+                    <Link
+                      className="text-white"
+                      to={{
+                        pathname: `/artist/${id}`,
+                        state: { artistName: name }
+                      }}>
                       {name}&nbsp;&nbsp;
                     </Link>
                     {genres &&
