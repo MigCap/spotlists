@@ -165,28 +165,10 @@ export const getTopTracksLong = () =>
 export const getArtist = artistId =>
   axios.get(`https://api.spotify.com/v1/artists/${artistId}`, { headers });
 
-/**
- * Get an Artist Biography
- * https://developer.spotify.com/documentation/web-api/reference/artists/get-artist/
- */
-/* export const getArtistBio = artistName => {
-  axios
-    .get(
-      `http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=${artistName}&api_key=${
-        process.env.REACT_APP_LAST_FM_KEY
-      }&format=json`
-    )
-    .then(response => {
-      //console.log(response.data.artist.bio);
-      const artistBio = response.data.artist.bio;
-      return artistBio;
-    });
-}; */
-
 export const getArtistBio = artistName => {
   try {
     return axios.get(
-      `http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=${artistName}&api_key=${
+      `https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=${artistName}&api_key=${
         process.env.REACT_APP_LAST_FM_KEY
       }&format=json`
     );
