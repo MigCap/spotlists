@@ -3,6 +3,7 @@ import React, { Component, Fragment } from 'react';
 import {
   getArtist,
   getArtistBio,
+  getArtistBioExpress,
   followArtist,
   doesUserFollowArtist
 } from '../../app/spotify';
@@ -18,12 +19,14 @@ export default class Artist extends Component {
   state = {
     artist: null,
     artistBio: null,
-    isFollowing: null
+    isFollowing: null,
+    error: null
   };
 
   componentDidMount() {
     catchErrors(this.getData());
     catchErrors(this.gettingArtistBio());
+    // catchErrors(this.gettingArtistBioExpress());
     catchErrors(this.isFollowing());
   }
 
@@ -36,10 +39,14 @@ export default class Artist extends Component {
 
   async gettingArtistBio() {
     const { artistName } = this.props.location.state;
-    const { data } = await getArtistBio(artistName);
-    // console.log(data);
-    this.setState({ artistBio: data.artist.bio });
-    // console.log(this.state.artistBio);
+    const { data, error } = await getArtistBio(artistName);
+    this.setState({ artistBio: data.artist.bio, error });
+  }
+
+  async gettingArtistBioExpress() {
+    const { artistName } = this.props.location.state;
+    const { data } = await getArtistBioExpress(artistName);
+    console.log(data);
   }
 
   isFollowing = async () => {

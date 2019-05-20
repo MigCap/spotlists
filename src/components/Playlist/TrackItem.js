@@ -9,8 +9,8 @@ const TrackItem = ({ track }) => {
   return (
     <li className="">
       <Link to={`/track/${track.id}`}>
-        <div className="trackContainer row align-items-center justify-content-end pb-3">
-          <div className="trackArtwork col-2 col-sm-2 m-0 p-0">
+        <div className="trackContainer row align-items-center justify-content-end pb-3 mx-2">
+          <div className="trackArtwork col-2 col-sm-2 align-self-start m-0 p-0 pt-1">
             {track.album.images.length && (
               <img
                 className="img-fluid"
@@ -23,7 +23,7 @@ const TrackItem = ({ track }) => {
           <div className="col-8 col-sm-8 align-self-start trackLeft text-left m-0 p-0 pl-3">
             {track.name && <p className="text-white m-0 p-0">{track.name}</p>}
             {track.artists && track.album && (
-              <p className="trackAlbum text-muted small-font ">
+              <p className="trackAlbum text-muted small-font">
                 {track.artists &&
                   track.artists.map(({ name }, i) => (
                     <span className="" key={i}>

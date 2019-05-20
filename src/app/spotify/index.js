@@ -165,6 +165,10 @@ export const getTopTracksLong = () =>
 export const getArtist = artistId =>
   axios.get(`https://api.spotify.com/v1/artists/${artistId}`, { headers });
 
+/**
+ * Get an Artist Bio from Last FM
+ *
+ */
 export const getArtistBio = artistName => {
   try {
     return axios.get(
@@ -172,6 +176,17 @@ export const getArtistBio = artistName => {
         process.env.REACT_APP_LAST_FM_KEY
       }&format=json`
     );
+  } catch (error) {
+    return error;
+  }
+};
+
+export const getArtistBioExpress = async artistName => {
+  try {
+    const { data } = await axios.get(
+      `http://localhost:8888/getartistbio?artist_name=${artistName}`
+    );
+    return data;
   } catch (error) {
     return error;
   }
