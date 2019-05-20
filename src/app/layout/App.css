@@ -58,7 +58,8 @@ div.app-dashboard {
 
 div.app-playlists {
   text-align: center;
-  padding-bottom: 80px; }
+  padding-bottom: 80px;
+  overflow: hidden; }
   @media (min-width: 990px) {
     div.app-playlists {
       padding: 20px 0;

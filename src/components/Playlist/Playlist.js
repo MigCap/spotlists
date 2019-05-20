@@ -37,8 +37,8 @@ export default class Playlist extends Component {
       <Fragment>
         {playlist ? (
           <div className="app-playlists">
-            <div className="row justify-content-start ml-3 playlist-container">
-              <div className="col-12 col-lg-4 playlist-left pl-3">
+            <div className="row justify-content-start playlist-container">
+              <div className="col-12 col-lg-4 playlist-left pl-3 px-3">
                 {playlist.images.length && (
                   <div className="playlist-cover mb-2">
                     <img src={playlist.images[0].url} alt="Album Art" />
