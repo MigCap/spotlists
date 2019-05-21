@@ -98,7 +98,7 @@ class TopArtists extends Component {
                     )}
                   </Link>
                 </div>
-                <div className="col-9 col-sm-9 align-self-center text-left pr-2">
+                <div className="col-9 col-sm-9 align-self-center text-left pl-2 pr-2">
                   <p className="text-white m-0 p-0">
                     <Link
                       className="text-white"
