@@ -9,7 +9,7 @@ import PlaylistCounter from './PlaylistCounter';
 import HoursCounter from './HoursCounter';
 import Followers from './Followers';
 import SearchFilter from './SearchFilter';
-import PlaylistListing from '../PlaylistListing/PlaylistListing';
+import PlaylistListing from './PlaylistListing';
 
 import Loader from '../Loader/Loader';
 
@@ -32,10 +32,8 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    // const accessToken = window.localStorage.getItem('spotify_access_token');
     if (token) {
       catchErrors(this.getData());
-      //this.fetchUser(accessToken);
       this.fetchPlaylists(token);
     }
 
@@ -46,10 +44,6 @@ class Dashboard extends Component {
 
   async getData() {
     const { user } = await getUserInfo();
-    //const playlistData = await getUserPlaylistsAndSongs(token);
-
-    //this.setState({ playlists: ownerPlaylists, fetchingPlaylists: false });
-
     this.setState({
       user: {
         name: user.display_name ? user.display_name : user.id,
@@ -91,6 +85,7 @@ class Dashboard extends Component {
                 .map(item => item.track)
                 .map(trackData => ({
                   artistName: trackData.artists[0].name,
+                  artistId: trackData.artists[0].id,
                   albumTitle: trackData.album.name,
                   trackName: trackData.name,
                   duration: trackData.duration_ms / 1000
@@ -174,13 +169,6 @@ class Dashboard extends Component {
           onClick={() => this.handleLogout()}>
           LOGOUT
         </button>
-        {/* <div className="row align-items-center justify-content-start no-gutters pb-4">
-          <div className="col-12 align-self-center">
-            <h2 className="title-font text-white font-weight-bold">
-              Your Playlists
-            </h2>
-          </div>
-        </div> */}
         <SearchFilter
           onTextChange={text => this.setState({ filterString: text })}
         />

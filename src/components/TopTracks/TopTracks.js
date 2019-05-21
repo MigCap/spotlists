@@ -45,7 +45,7 @@ class TopTracks extends Component {
 
     return (
       <div className="app-playlists">
-        <h2 className="title-font text-white text-center py-4 pb-5">
+        <h2 className="title-font text-white text-center py-4 pb-3">
           Top Tracks
         </h2>
 
@@ -81,13 +81,13 @@ class TopTracks extends Component {
               <div
                 className="row align-items-center justify-content-end no-gutters tracks-names pb-4"
                 key={i}>
-                <div className="col-2 col-sm-2 align-self-start">
+                <div className="col-2 col-sm-2 align-self-start pt-1">
                   <Link
                     className="playlist-img-container pl-2"
                     to={`/album/${album.id}`}>
                     {album.images.length ? (
                       <img
-                        className="album-track-img"
+                        className="album-track-img img-fluid"
                         src={album.images[0].url}
                         alt={name}
                       />
@@ -98,7 +98,7 @@ class TopTracks extends Component {
                     )}
                   </Link>
                 </div>
-                <div className="col-8 col-sm-8 align-self-start text-left pl-2 pr-2">
+                <div className="col-8 col-sm-8 align-self-start text-left pl-4">
                   <p className="m-0 p-0 text-white"> {name} </p>
                   <p className="m-0 p-0 text-muted">
                     <Link

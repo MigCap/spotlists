@@ -31,7 +31,7 @@ class Playlists extends Component {
         <h2 className="title-font text-white text-center py-4 pb-4">
           Your Playlists
         </h2>
-        <div className="playlists-wrapper">
+        <div className="playlists-wrapper pt-4">
           <div className="playlists-grid">
             {playlists && !isFetching ? (
               playlists.items.map(({ id, images, name, tracks }, i) => (

@@ -41,7 +41,11 @@ export default class Playlist extends Component {
               <div className="col-12 col-lg-4 playlist-left pl-3 px-3">
                 {playlist.images.length && (
                   <div className="playlist-cover mb-2">
-                    <img src={playlist.images[0].url} alt="Album Art" />
+                    <img
+                      className="img-fluid"
+                      src={playlist.images[0].url}
+                      alt="Album Art"
+                    />
                   </div>
                 )}
                 <a
