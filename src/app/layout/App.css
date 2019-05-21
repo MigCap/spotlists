@@ -507,15 +507,25 @@ input[type='text']::placeholder {
   .artists-img:hover {
     transition: all 0.2s ease-in-out;
     opacity: 0.8; }
+  @media (min-width: 578px) {
+    .artists-img {
+      width: 100px;
+      height: 100px;
+      display: inline-block; } }
   @media (min-width: 599px) {
     .artists-img {
+      width: 100px;
+      height: 100px;
       display: inline-block; } }
   @media (min-width: 767px) {
     .artists-img {
+      width: 100px;
+      height: 100px;
       display: inline-block; } }
   @media (min-width: 1200px) {
     .artists-img {
-      width: 80px; } }
+      width: 100px;
+      height: 100px; } }
 
 .icon-music svg {
   display: inline-block;

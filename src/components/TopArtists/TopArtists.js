@@ -79,9 +79,9 @@ class TopArtists extends Component {
           topArtists.map(({ id, name, images, followers, genres }, i) => {
             return (
               <div
-                className="row align-items-center justify-content-end no-gutters pb-4"
+                className="row align-items-center justify-content-end no-gutters pb-4 pl-4"
                 key={i}>
-                <div className="col-4 col-sm-5">
+                <div className="col-3 col-sm-3">
                   <Link
                     className="playlist-img-container pl-2"
                     to={`/artist/${id}`}>
@@ -98,7 +98,7 @@ class TopArtists extends Component {
                     )}
                   </Link>
                 </div>
-                <div className="col-8 col-sm-7 align-self-center text-left pr-2">
+                <div className="col-9 col-sm-9 align-self-center text-left pr-2">
                   <p className="text-white m-0 p-0">
                     <Link
                       className="text-white"

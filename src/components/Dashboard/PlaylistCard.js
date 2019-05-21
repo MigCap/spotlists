@@ -7,7 +7,7 @@ class PlaylistCard extends Component {
   render() {
     const { playlist } = this.props;
     return (
-      <div className="row justify-content-center no-gutters pb-3">
+      <div className="row justify-content-center no-gutters pb-3 px-md-5">
         <div className="co-12 col-sm-2 align-self-start pt-sm-3 pl-sm-4">
           <Link
             to={`/playlists/${playlist.id}`}

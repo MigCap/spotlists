@@ -44,7 +44,7 @@ class TopTracks extends Component {
     const { topTracks, isFetching, activeRange } = this.state;
 
     return (
-      <div className="app-playlists">
+      <div className="app-playlists px-md-5">
         <h2 className="title-font text-white text-center py-4 pb-3">
           Top Tracks
         </h2>
