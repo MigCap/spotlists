@@ -79,7 +79,7 @@ class TopArtists extends Component {
           topArtists.map(({ id, name, images, followers, genres }, i) => {
             return (
               <div
-                className="row align-items-center justify-content-end no-gutters pb-4 pl-4"
+                className="row align-items-center justify-content-end no-gutters pl-4"
                 key={i}>
                 <div className="col-3 col-sm-3">
                   <Link
