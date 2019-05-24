@@ -30,13 +30,15 @@ class Recent extends Component {
           Recent Activity
         </h2>
         <div className="recently-played-container pl-2 pl-md-4">
-          {recentlyPlayed ? (
-            recentlyPlayed.items.map(({ track }, i) => (
-              <TrackItem track={track} key={i} />
-            ))
-          ) : (
-            <Loader />
-          )}
+          <ul className="list-unstyled">
+            {recentlyPlayed ? (
+              recentlyPlayed.items.map(({ track }, i) => (
+                <TrackItem track={track} key={i} />
+              ))
+            ) : (
+              <Loader />
+            )}
+          </ul>
         </div>
       </div>
     );
