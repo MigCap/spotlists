@@ -113,6 +113,13 @@ export const getPlaylists = () =>
   axios.get('https://api.spotify.com/v1/me/playlists', { headers });
 
 /**
+ * Get an Album Information
+ * https://developer.spotify.com/documentation/web-api/reference/albums/get-album/
+ */
+export const getAlbum = albumId =>
+  axios.get(`https://api.spotify.com/v1/albums/${albumId}`, { headers });
+
+/**
  * Get a User's Top Artists
  * https://developer.spotify.com/documentation/web-api/reference/personalization/get-users-top-artists-and-tracks/
  */
