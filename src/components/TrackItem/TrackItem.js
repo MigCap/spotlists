@@ -9,7 +9,7 @@ const TrackItem = ({ track }) => {
   return (
     <li className="">
       <div className="trackContainer row align-items-center justify-content-end pb-3 mx-2">
-        <div className="trackArtwork col-2 col-sm-2 align-self-start m-0 p-0 pt-1">
+        <div className="col-2 col-sm-2 align-self-start trackArtwork m-0 p-0 pt-1">
           {track.album.images.length && (
             <img
               className="img-fluid"
@@ -19,7 +19,7 @@ const TrackItem = ({ track }) => {
           )}
         </div>
 
-        <div className="col-8 col-sm-8 align-self-start trackLeft text-left m-0 p-0 pl-3">
+        <div className="col-8 col-sm-8 align-self-center trackLeft text-left m-0 p-0 pl-3 pl-lg-5">
           {track.name && <p className="text-white m-0 p-0">{track.name}</p>}
           {track.artists && track.album && (
             <p className="trackAlbum text-muted">
@@ -54,7 +54,7 @@ const TrackItem = ({ track }) => {
             </p>
           )}
         </div>
-        <div className="col-2 col-sm-2 align-self-start trackRight text-muted text-left">
+        <div className="col-2 col-sm-2 align-self-center trackRight text-muted text-left">
           {track.duration_ms && (
             <p className="small-font p-0 m-0 pt-1">
               {formatDuration(track.duration_ms)}
