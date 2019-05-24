@@ -569,6 +569,14 @@ input[type='text']::placeholder {
 .artist-cover img {
   max-width: 100%; }
 
+.album-cover {
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto; }
+  .album-cover img {
+    width: 100%;
+    max-width: 300px; }
+
 .img-loading-overlay {
   background-color: #181818;
   bottom: 0;

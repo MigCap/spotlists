@@ -24,12 +24,12 @@ const TrackItem = ({ track }) => {
           {track.artists && track.album && (
             <p className="trackAlbum text-muted">
               {track.artists &&
-                track.artists.map(({ name }, i) => (
+                track.artists.map(({ name, id }, i) => (
                   <Link
                     key={i}
                     to={{
-                      pathname: `/artist/${name[0].id}`,
-                      state: { artistName: name[0].name }
+                      pathname: `/artist/${id}`,
+                      state: { artistName: name }
                     }}
                     className="text-muted">
                     <span className="small-font">
@@ -43,7 +43,12 @@ const TrackItem = ({ track }) => {
                   </Link>
                 ))}
               &nbsp;&middot;&nbsp;&nbsp;
-              <Link to={`/track/${track.id}`} className="text-muted small-font">
+              <Link
+                to={{
+                  pathname: `/album/${track.album.id}`,
+                  state: { albumId: track.album.id }
+                }}
+                className="text-muted small-font">
                 {track.album.name}
               </Link>
             </p>

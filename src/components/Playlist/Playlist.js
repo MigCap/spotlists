@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { getPlaylist, getAudioFeaturesForTracks } from '../../app/spotify';
 import { catchErrors, setPlaylistName } from '../../app/helpers';
 
-import TrackItem from './TrackItem';
+import TrackItem from '../TrackItem/TrackItem';
 
 import Loader from '../Loader/Loader';
 
