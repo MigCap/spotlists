@@ -11,15 +11,22 @@ const TrackItem = ({ track }) => {
       <div className="trackContainer row align-items-center justify-content-end pb-3 mx-2">
         <div className="col-2 col-sm-2 align-self-start trackArtwork m-0 p-0 pt-1">
           {track.album.images.length && (
-            <img
-              className="img-fluid"
-              src={track.album.images[1].url}
-              alt="Album Artwork"
-            />
+            <Link
+              className="playlist-img-container pl-2"
+              to={{
+                pathname: `/album/${track.album.id}`,
+                state: { albumId: track.album.id }
+              }}>
+              <img
+                className="img-fluid track-item-img"
+                src={track.album.images[1].url}
+                alt="Album Artwork"
+              />
+            </Link>
           )}
         </div>
 
-        <div className="col-8 col-sm-8 align-self-center trackLeft text-left m-0 p-0 pl-3 pl-lg-5">
+        <div className="col-8 col-sm-8 align-self-start trackLeft text-left m-0 p-0 pl-4 pl-lg-5">
           {track.name && <p className="text-white m-0 p-0">{track.name}</p>}
           {track.artists && track.album && (
             <p className="trackAlbum text-muted">
@@ -54,7 +61,7 @@ const TrackItem = ({ track }) => {
             </p>
           )}
         </div>
-        <div className="col-2 col-sm-2 align-self-center trackRight text-muted text-left">
+        <div className="col-2 col-sm-2 align-self-start trackRight text-muted text-left">
           {track.duration_ms && (
             <p className="small-font p-0 m-0 pt-1">
               {formatDuration(track.duration_ms)}
