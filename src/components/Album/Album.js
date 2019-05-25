@@ -106,10 +106,10 @@ class Album extends Component {
                       album.tracks.items.map((track, i) => (
                         <li key={i}>
                           <div className="row align-items-center justify-content-start pb-1">
-                            <div className="col-9 col-sm-9 align-self-start text-left m-0 p-0 pl-3">
+                            <div className="col-9 align-self-start text-left">
                               <p className="text-white">{track.name}</p>
                             </div>
-                            <div className="col-3 col-sm-3 align-self-start text-muted text-center">
+                            <div className="col-3 align-self-start text-muted text-right">
                               {track.duration_ms && (
                                 <p className="small-font p-0 m-0 pt-1">
                                   {formatDuration(track.duration_ms)}
