@@ -112,7 +112,7 @@ class TopTracks extends Component {
                       className="text-muted">
                       {artists[0].name}
                     </Link>{' '}
-                    -
+                    -{' '}
                     <Link
                       to={{
                         pathname: `/album/${album.id}`,
