@@ -76,7 +76,7 @@ class TopTracks extends Component {
         </div>
 
         {topTracks && !isFetching ? (
-          topTracks.map(({ name, album, href, artists, duration_ms }, i) => {
+          topTracks.map(({ name, album, artists, duration_ms }, i) => {
             return (
               <div
                 className="row align-items-center justify-content-end no-gutters tracks-names pb-4"
@@ -84,7 +84,10 @@ class TopTracks extends Component {
                 <div className="col-2 col-sm-2 align-self-start pt-1">
                   <Link
                     className="playlist-img-container pl-2"
-                    to={`/album/${album.id}`}>
+                    to={{
+                      pathname: `/album/${album.id}`,
+                      state: { albumId: album.id }
+                    }}>
                     {album.images.length ? (
                       <img
                         className="album-track-img img-fluid"
@@ -109,7 +112,15 @@ class TopTracks extends Component {
                       className="text-muted">
                       {artists[0].name}
                     </Link>{' '}
-                    - {album.name}
+                    -
+                    <Link
+                      to={{
+                        pathname: `/album/${album.id}`,
+                        state: { albumId: album.id }
+                      }}
+                      className="text-muted">
+                      {album.name}
+                    </Link>
                   </p>
                 </div>
                 <div className="col-2 col-sm-2 align-self-start">

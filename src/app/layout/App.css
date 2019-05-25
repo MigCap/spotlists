@@ -577,6 +577,12 @@ input[type='text']::placeholder {
     width: 100%;
     max-width: 300px; }
 
+.track-item-img {
+  transition: all 0.2s ease-in-out; }
+  .track-item-img:hover {
+    transition: all 0.2s ease-in-out;
+    opacity: 0.8; }
+
 .img-loading-overlay {
   background-color: #181818;
   bottom: 0;
