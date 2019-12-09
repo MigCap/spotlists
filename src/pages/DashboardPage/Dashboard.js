@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { token, getUserInfo } from 'app/spotify';
 import { catchErrors } from 'app/helpers';
 
-import Login from '../LoginPage/Login';
+import Login from 'pages/LoginPage/Login';
 import UserAvatar from 'components/UserAvatar/UserAvatar';
 import PlaylistCounter from 'components/PlaylistCounter/PlaylistCounter';
 import HoursCounter from 'components/HoursCounter/HoursCounter';
