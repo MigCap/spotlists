@@ -29,7 +29,7 @@ class Playlists extends Component {
     const { playlists, isFetching } = this.state;
 
     return (
-      <div className="app-playlists px-5">
+      <div className="app-playlists px-3">
         <h2 className="title-font text-white text-center py-4 pb-4">
           Your Playlists
         </h2>

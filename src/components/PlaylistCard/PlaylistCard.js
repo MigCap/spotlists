@@ -20,7 +20,7 @@ class PlaylistCard extends Component {
           </Link>
         </div>
 
-        <div className="col-12 col-sm-10 px-5 px-sm-3 pt-3 pt-sm-0 pb-4 pb-sm-0 pr-md-4">
+        <div className="col-12 col-sm-10 px-3 px-sm-3 pt-3 pt-sm-0 pb-4 pb-sm-0 pr-md-4">
           <div className="pb-1 text-sm-left">
             <Link
               to={`/playlists/${playlist.id}`}
