@@ -1,6 +1,6 @@
 import React from 'react';
 
-import PlaylistCard from './PlaylistCard';
+import PlaylistCard from '../PlaylistCard/PlaylistCard';
 
 export default function PlaylistListing(props) {
   const { playlistToRender } = props;

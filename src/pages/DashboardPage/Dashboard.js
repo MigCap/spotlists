@@ -1,23 +1,17 @@
 import React, { Component } from 'react';
 
-import {
-  token,
-  logout,
-  getUserInfo,
-  getPlaylists,
-  getPlaylistTracks
-} from '../../app/spotify';
-import { catchErrors } from '../../app/helpers';
+import { token, getUserInfo } from 'app/spotify';
+import { catchErrors } from 'app/helpers';
 
-import Login from '../login/Login';
-import UserAvatar from './UserAvatar';
-import PlaylistCounter from './PlaylistCounter';
-import HoursCounter from './HoursCounter';
-import Followers from './Followers';
-import SearchFilter from './SearchFilter';
-import PlaylistListing from './PlaylistListing';
+import Login from 'pages/LoginPage/Login';
+import UserAvatar from 'components/UserAvatar/UserAvatar';
+import PlaylistCounter from 'components/PlaylistCounter/PlaylistCounter';
+import HoursCounter from 'components/HoursCounter/HoursCounter';
+import Followers from 'components/Followers/Followers';
+import SearchFilter from 'components/SearchFilter/SearchFilter';
+import PlaylistListing from 'components/PlaylistListing/PlaylistListing';
 
-import Loader from '../Loader/Loader';
+import Loader from 'components/Loader/Loader';
 
 class Dashboard extends Component {
   constructor() {

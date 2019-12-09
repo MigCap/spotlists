@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import { getPlaylists } from '../../app/spotify';
 import { catchErrors, setPlaylistName } from '../../app/helpers';
 
-import { IconMusic } from '../icons';
+import { IconMusic } from '../../assets/icons';
 
-import Loader from '../Loader/Loader';
+import Loader from '../../components/Loader/Loader';
 
 class Playlists extends Component {
   state = {

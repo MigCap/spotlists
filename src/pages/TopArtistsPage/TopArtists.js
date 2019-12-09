@@ -8,9 +8,9 @@ import {
 } from '../../app/spotify';
 import { catchErrors, formatWithCommas } from '../../app/helpers';
 
-import { IconMusic } from '../icons';
+import { IconMusic } from '../../assets/icons';
 
-import Loader from '../Loader/Loader';
+import Loader from '../../components/Loader/Loader';
 
 class TopArtists extends Component {
   state = {
