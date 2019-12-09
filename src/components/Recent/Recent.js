@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 import { getRecentlyPlayed } from '../../app/spotify';
 import { catchErrors } from '../../app/helpers';
 
-import TrackItem from '../../components/TrackItem/TrackItem';
+import TrackItem from '../TrackItem/TrackItem';
 
-import Loader from '../../components/Loader/Loader';
+import Loader from '../Loader/Loader';
 
 class Recent extends Component {
   state = {

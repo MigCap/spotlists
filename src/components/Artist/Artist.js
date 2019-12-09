@@ -14,13 +14,13 @@ import {
   clearString
 } from '../../app/helpers';
 
-import Loader from '../../components/Loader/Loader';
+import Loader from '../Loader/Loader';
 export default class Artist extends Component {
   state = {
     artist: null,
     artistBio: null,
     isFollowing: null,
-    error: null,
+    error: null
   };
 
   componentDidMount() {
@@ -33,26 +33,20 @@ export default class Artist extends Component {
   async getData() {
     const { artistId } = this.props.match.params;
     const { data } = await getArtist(artistId);
-    
-    this.setState({
-      artist: data
-    });
+
+    this.setState({ artist: data });
   }
 
   async gettingArtistBio() {
     const { artistName } = this.props.location.state;
-    const { data } = await getArtistBio(artistName);
-
-    this.setState({
-      artistBio: data && data.artist && data.artist.bio,
-      error: data.error && data.error,
-    });
+    const { data, error } = await getArtistBio(artistName);
+    this.setState({ artistBio: data.artist.bio, error });
   }
 
   async gettingArtistBioExpress() {
     const { artistName } = this.props.location.state;
     const { data } = await getArtistBioExpress(artistName);
-    // console.log(data);
+    console.log(data);
   }
 
   isFollowing = async () => {
@@ -69,22 +63,8 @@ export default class Artist extends Component {
   };
 
   render() {
-    const { artist, artistBio, isFollowing, error } = this.state;
-    const trackedError = error && error === 6;
+    const { artist, artistBio, isFollowing } = this.state;
 
-    if (trackedError) {
-      return (
-        <div className="app-playlists">
-          <div className="row justify-content-center ml-3 pt-4">
-            <div className="col-12 pl-3">
-              <h3 className="text-white font-weight-bolder mt-5">
-                Artist Not Found
-              </h3>
-            </div>
-          </div>
-        </div>
-      )
-    }
     return (
       <Fragment>
         {artist && artistBio ? (

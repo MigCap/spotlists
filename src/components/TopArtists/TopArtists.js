@@ -8,9 +8,9 @@ import {
 } from '../../app/spotify';
 import { catchErrors, formatWithCommas } from '../../app/helpers';
 
-import { IconMusic } from '../../assets/icons';
+import { IconMusic } from '../icons';
 
-import Loader from '../../components/Loader/Loader';
+import Loader from '../Loader/Loader';
 
 class TopArtists extends Component {
   state = {
@@ -109,7 +109,7 @@ class TopArtists extends Component {
                       {name}&nbsp;&nbsp;
                     </Link>
                   </p>
-                  <p className="text-muted small-font text-uppercase m-0 p-0">
+                  <p className="text-muted text-uppercase m-0 p-0">
                     {genres &&
                       genres.map((genre, i) => {
                         if (i <= 0) {
