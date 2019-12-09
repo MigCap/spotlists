@@ -43,7 +43,7 @@ class Album extends Component {
                     {album.name}
                   </h4>
 
-                  <p className="text-muted m-0 p-0">
+                  <p className="text-muted small-font m-0 p-0">
                     By{' '}
                     {album.artists &&
                       album.artists.map(({ name, id }, i) => (
@@ -64,14 +64,11 @@ class Album extends Component {
                           </span>
                         </Link>
                       ))}
-                  </p>
-                  <p className="text-muted small-font m-0 p-0">
-                    Released - {album.release_date}
+                    <span>&nbsp;({album.release_date})</span>
                   </p>
                   <p className="text-muted small-font m-0 p-0">
                     {formatString(album.type)} - {album.total_tracks} Tracks
                   </p>
-
                   <a
                     href={album.external_urls.spotify}
                     target="_blank"
@@ -109,10 +106,10 @@ class Album extends Component {
                       album.tracks.items.map((track, i) => (
                         <li key={i}>
                           <div className="row align-items-center justify-content-start pb-1">
-                            <div className="col-9 align-self-start text-left">
+                            <div className="col-9 col-sm-9 align-self-start text-left m-0 p-0 pl-3">
                               <p className="text-white">{track.name}</p>
                             </div>
-                            <div className="col-3 align-self-start text-muted text-right">
+                            <div className="col-3 col-sm-3 align-self-start text-muted text-center">
                               {track.duration_ms && (
                                 <p className="small-font p-0 m-0 pt-1">
                                   {formatDuration(track.duration_ms)}
