@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import sptLogo from 'assets/img/spt-logo.png';
+
 class Login extends Component {
   getAuthToken = () => {
     const LOGIN_URI =
@@ -15,7 +17,7 @@ class Login extends Component {
       <div className="text-center app-login row justify-content-center m-0">
         <div className="col-10 align-self-center pb-5">
           <div className="container logo img-fluid pb-3">
-            <img src="spt-logo.png" alt="spotify logo" />
+            <img src={sptLogo} alt="spotify logo" />
           </div>
 
           <div className="container mt-4">
