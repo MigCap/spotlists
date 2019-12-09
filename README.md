@@ -1,3 +1,5 @@
-# kp-spotlist
+# Kp-Spotlist
+
+A ReactJs spotify client.
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
