@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 
-import { getHashParams } from '../../app/helpers';
+import { getHashParams } from 'app/helpers';
 
-import Loader from '../../components/Loader/Loader';
+import Loader from 'components/Loader/Loader';
 
 import queryString from 'query-string';
+
+import sptLogo from 'assets/img/spt-logo.png';
 
 const LoginHook = () => {
   const [accessToken, setAccessToken] = useState('');
@@ -50,7 +52,7 @@ const LoginHook = () => {
     return (
       <div className="text-center p-3 app-login pt-md-5">
         <div className="container logo img-fluid pb-3">
-          <img src="spt-logo.png" alt="spotify logo" />
+          <img src={sptLogo} alt="spotify logo" />
           <hr />
         </div>
 
