@@ -109,7 +109,7 @@ class TopArtists extends Component {
                       {name}&nbsp;&nbsp;
                     </Link>
                   </p>
-                  <p className="text-muted small-font text-uppercase m-0 p-0">
+                  <p className="text-muted text-uppercase m-0 p-0">
                     {genres &&
                       genres.map((genre, i) => {
                         if (i <= 0) {
