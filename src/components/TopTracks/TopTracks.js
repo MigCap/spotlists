@@ -8,8 +8,8 @@ import {
 } from '../../app/spotify';
 import { catchErrors, formatDuration } from '../../app/helpers';
 
-import { IconMusic } from '../../assets/icons';
-import Loader from '../../components/Loader/Loader';
+import { IconMusic } from '../icons';
+import Loader from '../Loader/Loader';
 
 class TopTracks extends Component {
   state = {
@@ -112,7 +112,7 @@ class TopTracks extends Component {
                       className="text-muted">
                       {artists[0].name}
                     </Link>{' '}
-                    -
+                    -{' '}
                     <Link
                       to={{
                         pathname: `/album/${album.id}`,

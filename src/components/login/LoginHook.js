@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 
 import { getHashParams } from '../../app/helpers';
 
-import Loader from '../../components/Loader/Loader';
+import Loader from '../Loader/Loader';
 
 import queryString from 'query-string';
 
