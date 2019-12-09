@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 
-import { token, getUserInfo } from '../../app/spotify';
+import {
+  token,
+  logout,
+  getUserInfo,
+  getPlaylists,
+  getPlaylistTracks
+} from '../../app/spotify';
 import { catchErrors } from '../../app/helpers';
 
 import Login from '../login/Login';
@@ -34,7 +40,7 @@ class Dashboard extends Component {
   componentDidMount() {
     if (token) {
       catchErrors(this.getData());
-      this.fetchPlaylists(token);
+      //this.fetchPlaylists(token);
     }
 
     if (!token || this.state.fetchError) {
@@ -52,11 +58,59 @@ class Dashboard extends Component {
       },
       fetchingUser: false
     });
+    const { data } = await getPlaylists();
+    if (data.items) {
+      this.getOwnerPlaylistsAndTracks(data.items);
+    }
+  }
+
+  async getOwnerPlaylistsAndTracks(playlists) {
+    let ownerPlaylists = [];
+
+    if (playlists && playlists.length >= 0) {
+      playlists.map(playlist => {
+        if (playlist.owner.id === this.state.user.name) {
+          ownerPlaylists.push(playlist);
+        }
+        return playlist;
+      });
+    }
+
+    if (ownerPlaylists && ownerPlaylists.length >= 0) {
+      ownerPlaylists.forEach(async (playlistTracks, i) => {
+        const playlistId = playlists[i].id;
+        const { data } = await getPlaylistTracks(playlistId);
+
+        ownerPlaylists[i].playlistTracks = data.items;
+      });
+    }
+
+    if (ownerPlaylists && ownerPlaylists.length >= 0) {
+      console.log(ownerPlaylists);
+      await this.setState({
+        playlists: ownerPlaylists.map(playlist => {
+          console.log(playlist.playlistTracks);
+          return {
+            name: playlist.name,
+            imageUrl: playlist.images.find(
+              image => image.width === 300 || image.width === 640
+            ).url,
+            songs: playlist.playlistTracks.slice(0, 3),
+            totalTracks: playlist.tracks.total,
+            externalUrl: playlist.external_urls.spotify,
+            id: playlist.id
+          };
+        }),
+        fetchingPlaylists: false
+      });
+    }
+    //console.log(ownerPlaylists);
+    return ownerPlaylists;
   }
 
   fetchPlaylists(accessToken) {
     fetch('https://api.spotify.com/v1/me/playlists', {
-      headers: { Authorization: 'Bearer ' + accessToken }
+      headers: { Authorization: `Bearer ${accessToken}` }
     })
       .then(response => response.json())
       .then(playlistData => {
@@ -64,7 +118,7 @@ class Dashboard extends Component {
           this.setState({
             fetchError: true
           });
-          return this.handleLogout();
+          return logout();
         } else {
           let playlists = playlistData.items;
           let trackDataPromises = playlists.map(playlist => {
@@ -124,12 +178,25 @@ class Dashboard extends Component {
       });
   }
 
-  handleLogout() {
-    window.localStorage.removeItem('spotify_token_timestamp');
-    window.localStorage.removeItem('spotify_access_token');
-    window.localStorage.removeItem('spotify_refresh_token');
-    window.location.href = '/';
-  }
+  /* filterPlaylists() {
+    const { user, playlists } = this.state;
+
+    if (user && playlists) {
+      return playlists.filter(playlist => {
+        let matchesPlaylist = playlist.name
+          .toLowerCase()
+          .includes(this.state.filterString.toLowerCase());
+        let matchesSong = playlist.songs.filter(song =>
+          song.trackName
+            .toLowerCase()
+            .includes(this.state.filterString.toLowerCase())
+        );
+        return matchesPlaylist || matchesSong.length > 0;
+      });
+    } else {
+      return [];
+    }
+  } */
 
   filterPlaylists() {
     const { user, playlists } = this.state;
@@ -140,7 +207,7 @@ class Dashboard extends Component {
           .toLowerCase()
           .includes(this.state.filterString.toLowerCase());
         let matchesSong = playlist.songs.filter(song =>
-          song.trackName
+          song.track.name
             .toLowerCase()
             .includes(this.state.filterString.toLowerCase())
         );
@@ -166,7 +233,7 @@ class Dashboard extends Component {
 
         <button
           className="btn btn-sm btn-white text-white round-corner font-weight-bold mt-4 mb-5 px-4 py-2"
-          onClick={() => this.handleLogout()}>
+          onClick={() => logout()}>
           LOGOUT
         </button>
         <SearchFilter

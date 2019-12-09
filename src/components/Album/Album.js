@@ -43,7 +43,7 @@ class Album extends Component {
                     {album.name}
                   </h4>
 
-                  <p className="text-muted small-font m-0 p-0">
+                  <p className="text-muted m-0 p-0">
                     By{' '}
                     {album.artists &&
                       album.artists.map(({ name, id }, i) => (
@@ -64,11 +64,14 @@ class Album extends Component {
                           </span>
                         </Link>
                       ))}
-                    <span>&nbsp;({album.release_date})</span>
+                  </p>
+                  <p className="text-muted small-font m-0 p-0">
+                    Released - {album.release_date}
                   </p>
                   <p className="text-muted small-font m-0 p-0">
                     {formatString(album.type)} - {album.total_tracks} Tracks
                   </p>
+
                   <a
                     href={album.external_urls.spotify}
                     target="_blank"
