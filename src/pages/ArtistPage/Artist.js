@@ -6,15 +6,18 @@ import {
   getArtistBioExpress,
   followArtist,
   doesUserFollowArtist
-} from '../../app/spotify';
+} from 'app/spotify';
 import {
   catchErrors,
   formatWithCommas,
   setPlaylistName,
   clearString
-} from '../../app/helpers';
+} from 'app/helpers';
 
-import Loader from '../../components/Loader/Loader';
+import Loader from 'components/Loader/Loader';
+
+import './Artist.scss';
+
 export default class Artist extends Component {
   state = {
     artist: null,

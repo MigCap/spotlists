@@ -1,0 +1,151 @@
+@import 'src/styles/shared/variables';
+@import 'src/styles/shared/mixins';
+// NAVBAR
+nav.navBar {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    -webkit-box-pack: center;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    left: 0px;
+    bottom: -1px;
+    width: 100%;
+    height: 70px;
+    min-height: 70px;
+    text-align: center;
+    z-index: 99;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 10px;
+    background-color: $extraDark;
+    @include for-tablet-landscape-up {
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        align-items: center;
+        flex-direction: column;
+        min-height: 100vh;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 100px;
+        text-align: center;
+    }
+    .spotify-nav-icon {
+        display: none;
+        @include for-tablet-landscape-up {
+            display: block;
+            color: $muted;
+            width: 40px;
+            height: 40px;
+            margin-top: 40px;
+            opacity: 0.8;
+            &:hover {
+                transition: $transitionEaseIn;
+                opacity: 1;
+            }
+        }
+        a {
+            svg {
+                fill: $success;
+                vertical-align: middle;
+            }
+        }
+    }
+    .github-icon {
+        display: none;
+        @include for-tablet-landscape-up {
+            display: block;
+            width: 35px;
+            height: 35px;
+            margin-bottom: 40px;
+            opacity: 0.8;
+        }
+        a {
+            &:hover {
+                transition: $transitionEaseIn;
+                opacity: 1;
+            }
+            svg {
+                fill: $muted;
+                vertical-align: middle;
+                &:hover {
+                    transition: $transitionEaseIn;
+                    fill: $white;
+                }
+            }
+        }
+    }
+}
+
+ul.navegacion {
+    display: flex;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+    @include for-tablet-landscape-up {
+        flex-direction: column;
+    }
+    li {
+        display: list-item;
+        -webkit-box-flex: 1;
+        flex-grow: 1;
+        flex-basis: 100%;
+        height: 100%;
+        a {
+            color: $muted !important;
+            font-size: 11px;
+            display: flex;
+            -webkit-box-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 10px 0;
+            @include for-tablet-portrait-up {
+                border-top: 3px solid transparent !important;
+            }
+            @include for-tablet-landscape-up {
+                padding: 20px 0;
+                border-top: 0px !important;
+                border-left: 3px solid transparent !important;
+            }
+            &:focus {
+                color: $white;
+                background-color: $dark;
+            }
+            &:hover {
+                color: $white !important;
+                background-color: #181818 !important;
+                border-left: 0px !important;
+                border-top: 3px solid $success !important;
+                cursor: pointer;
+                text-decoration: none;
+                transition: all 0.25s cubic-bezier(0.3, 0, 0.4, 1) 0s;
+                @include for-tablet-landscape-up {
+                    border-left: 3px solid $success !important;
+                    border-top: 0px !important;
+                }
+            }
+            &.active {
+                color: $white !important;
+                border-left: 0px !important;
+                border-top: 3px solid $success !important;
+                background-color: $dark !important;
+                @include for-tablet-landscape-up {
+                    border-left: 3px solid $success !important;
+                    border-top: 0px !important;
+                }
+                svg {
+                    fill: currentColor;
+                }
+            }
+            svg {
+                fill: currentColor;
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+}

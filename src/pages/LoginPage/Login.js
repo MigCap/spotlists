@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import sptLogo from 'assets/img/spt-logo.png';
 
+import './Login.scss';
+
 class Login extends Component {
   getAuthToken = () => {
     const LOGIN_URI =

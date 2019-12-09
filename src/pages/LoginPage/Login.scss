@@ -1,0 +1,21 @@
+@import 'src/styles/shared/variables';
+@import 'src/styles/shared/mixins';
+div.app-login {
+    background-color: rgb(24, 24, 24);
+    height: 100vh;
+    min-height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
+}
+
+.logo img {
+    max-width: 200px;
+}
+
+button.round-corner {
+    border-radius: 50px;
+    font-size: 1em;
+    @include for-tablet-portrait-up {
+        font-size: 1.2em;
+    }
+}

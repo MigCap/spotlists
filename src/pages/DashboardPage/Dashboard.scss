@@ -1,0 +1,130 @@
+@import 'src/styles/shared/variables';
+@import 'src/styles/shared/mixins';
+//DASHBOARD
+div.app-dashboard {
+    text-align: center;
+    padding-bottom: 80px;
+    @include for-tablet-landscape-up {
+        padding: 20px 0;
+        margin-left: 70px;
+    }
+}
+
+.avatar {
+    width: 5em;
+    height: 5em;
+    border: solid $white 2px;
+    border-radius: 100px;
+    @include for-phone-only {
+        width: 5em;
+        height: 5em;
+        border: solid $white 2px;
+        border-radius: 100px;
+    }
+    @include for-tablet-portrait-up {
+        width: 5em;
+        height: 5em;
+        border: solid $white 2px;
+        border-radius: 100px;
+    }
+    @include for-tablet-landscape-up {
+        width: 5em;
+        height: 5em;
+        border: solid $white 2px;
+        border-radius: 100px;
+    }
+    @include for-desktop-up {
+        width: 5em;
+        height: 5em;
+        border: solid $white 2px;
+        border-radius: 100px;
+    }
+}
+
+#user-icon {
+    width: 3em;
+    fill: $white;
+    @include for-tablet-portrait-up {
+        width: 3em;
+    }
+    @include for-tablet-landscape-up {
+        width: 3em;
+    }
+    @include for-desktop-up {
+        width: 3em;
+    }
+}
+
+.btn-white {
+    font-size: 12px !important;
+    border-radius: 50px !important;
+    border: solid 1px $white !important;
+    background: $dark !important;
+    &:hover {
+        color: $dark !important;
+        background: $white !important;
+        transition: $transitionEaseIn;
+    }
+}
+
+// search field
+.sticky-search {
+    height: 70px;
+    z-index: 98;
+    background-color: $dark;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+
+input.round-corner {
+    border-radius: 50px;
+    border: solid 1px $white;
+    max-width: 75%;
+    background: $dark;
+    background-color: $dark;
+    @include for-phone-only {
+        max-width: 75%;
+    }
+    @include for-tablet-portrait-up {
+        max-width: 50%;
+    }
+    @include for-tablet-landscape-up {
+        max-width: 40%;
+    }
+    @include for-desktop-up {
+        max-width: 30%;
+    }
+}
+
+input[type='text']::placeholder {
+    /* Firefox, Chrome, Opera */
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    font-weight: 500;
+    color: $white;
+}
+
+.dasboard-playlist-title {
+    font-size: 1.5em;
+    @include for-phone-only {
+        font-size: 1.5em;
+    }
+    @include for-tablet-portrait-up {
+        font-size: 1.6em;
+    }
+    @include for-tablet-landscape-up {
+        font-size: 1.6em;
+    }
+    @include for-desktop-up {
+        font-size: 1.6em;
+    }
+    span {
+        font-size: 0.5em;
+    }
+}
+
+.dashboard-cards-text {
+    font-size: 0.8em;
+}

@@ -5,12 +5,14 @@ import {
   getTopArtistsShort,
   getTopArtistsMedium,
   getTopArtistsLong
-} from '../../app/spotify';
-import { catchErrors, formatWithCommas } from '../../app/helpers';
+} from 'app/spotify';
+import { catchErrors, formatWithCommas } from 'app/helpers';
 
-import { IconMusic } from '../../assets/icons';
+import { IconMusic } from 'assets/icons';
 
-import Loader from '../../components/Loader/Loader';
+import Loader from 'components/Loader/Loader';
+
+import './TopArtists.scss';
 
 class TopArtists extends Component {
   state = {

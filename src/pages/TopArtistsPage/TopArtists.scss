@@ -1,0 +1,54 @@
+@import 'src/styles/shared/variables';
+@import 'src/styles/shared/mixins';
+.artists-img {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: $transitionEaseIn;
+    &:hover {
+        transition: $transitionEaseIn;
+        opacity: 0.8;
+    }
+    @include for-sm-only {
+        width: 100px;
+        height: 100px;
+        display: inline-block;
+    }
+    @include for-phone-only {
+        width: 100px;
+        height: 100px;
+        display: inline-block;
+    }
+    @include for-tablet-portrait-up {
+        width: 100px;
+        height: 100px;
+        display: inline-block;
+    }
+    @include for-desktop-up {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+.icon-music {
+    svg {
+        display: inline-block;
+        fill: $muted;
+        width: 70px;
+        height: 70px;
+        @include for-tablet-portrait-up {
+            display: inline-block;
+        }
+        @include for-desktop-up {
+            width: 80px;
+        }
+    }
+    @include for-tablet-portrait-up {
+        display: inline-block;
+    }
+    @include for-desktop-up {
+        width: 75px;
+    }
+}
