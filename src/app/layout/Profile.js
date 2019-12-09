@@ -1,15 +1,15 @@
 import React, { Component, Fragment } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import NavBar from './NavBar/NavBar';
-import Dashboard from './Dashboard/Dashboard';
-import TopArtists from './TopArtists/TopArtists';
-import Artist from './Artist/Artist';
-import TopTracks from './TopTracks/TopTracks';
-import Album from './Album/Album';
-import Recent from './Recent/Recent';
-import Playlists from './Playlists/Playlists';
-import Playlist from './Playlist/Playlist';
+import NavBar from 'components/NavBar/NavBar';
+import Dashboard from 'pages/DashboardPage/Dashboard';
+import TopArtists from 'pages/TopArtistsPage/TopArtists';
+import Artist from 'pages/ArtistPage/Artist';
+import TopTracks from 'pages/TopTracksPage/TopTracks';
+import Album from 'components/Album/Album';
+import Recent from 'pages/RecentPage/Recent';
+import Playlists from 'pages/PlaylistsPage/Playlists';
+import Playlist from 'components/PlaylistDetail/Playlist';
 
 class Profile extends Component {
   render() {

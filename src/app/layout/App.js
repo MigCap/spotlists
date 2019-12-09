@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { token } from '../spotify';
+import { token } from 'app/spotify';
 
-import './App.css';
+import './App.scss';
 
-import Login from '../../components/login/Login';
-import Profile from '../../components/Profile';
+import Login from 'pages/LoginPage/Login';
+import Profile from 'app/layout/Profile';
 
 class App extends Component {
   state = {
