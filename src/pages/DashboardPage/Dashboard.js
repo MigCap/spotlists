@@ -13,6 +13,8 @@ import PlaylistListing from 'components/PlaylistListing/PlaylistListing';
 
 import Loader from 'components/Loader/Loader';
 
+import './Dashboard.scss';
+
 class Dashboard extends Component {
   constructor() {
     super();

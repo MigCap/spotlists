@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import { getPlaylists } from '../../app/spotify';
-import { catchErrors, setPlaylistName } from '../../app/helpers';
+import { getPlaylists } from 'app/spotify';
+import { catchErrors, setPlaylistName } from 'app/helpers';
 
-import { IconMusic } from '../../assets/icons';
+import { IconMusic } from 'assets/icons';
 
-import Loader from '../../components/Loader/Loader';
+import Loader from 'components/Loader/Loader';
+
+import './Playlists.scss';
 
 class Playlists extends Component {
   state = {

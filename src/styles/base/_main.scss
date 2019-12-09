@@ -1,0 +1,172 @@
+// GENERAL STYLING **************************************************
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+body {
+    min-height: 100%;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    background-color: $dark !important;
+    color: $white;
+}
+
+#root {
+    min-height: 100%;
+}
+
+.App {
+    height: 100%;
+    min-height: 100vh;
+}
+
+a {
+    transition: $transitionEaseIn;
+    &:hover {
+        color: $muted !important;
+        text-decoration: none !important;
+    }
+}
+
+div.no-border {
+    border: none;
+    color: rgb(245, 245, 245);
+    background-color: transparent;
+    div {
+        ul {
+            li {
+                background-color: transparent;
+            }
+        }
+    }
+}
+
+.small-font {
+    font-size: .9em;
+    @include for-sm-only {
+        font-size: .8em;
+    }
+}
+
+.title-font {
+    letter-spacing: -2px;
+    font-weight: 800;
+}
+
+button.buttons-range {
+    margin: 10px;
+    padding: 5px 10px;
+    font-size: 0.7em;
+    font-weight: 500;
+    color: $white;
+    background-color: $dark;
+    border: solid 1px $white;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: $transitionEaseIn;
+    &:hover {
+        color: $dark !important;
+        background-color: $white;
+        text-decoration: none;
+    }
+    &:focus {
+        outline: none;
+    }
+}
+
+button.buttons-range-active {
+    margin: 10px;
+    padding: 5px 10px;
+    font-size: 0.7em;
+    font-weight: 500;
+    color: $dark;
+    background-color: $white;
+    border: solid 1px $white;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: $transitionEaseIn;
+    &:focus {
+        outline: none;
+    }
+}
+
+a.btn-custom {
+    display: inline-block;
+    margin: 10px;
+    padding: 11px 20px;
+    font-size: 0.9em;
+    font-weight: 900;
+    color: $white;
+    background-color: $success;
+    border: solid 1px $success;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: $transitionEaseIn;
+    &:hover {
+        color: $white !important;
+        background-color: transparent;
+        border: solid 1px $white;
+        outline: 0;
+    }
+    &:focus {
+        outline: none;
+    }
+}
+
+button.btn-custom {
+    display: inline-block;
+    margin: 10px;
+    padding: 11px 20px;
+    font-size: 0.9em;
+    font-weight: 900;
+    color: $white;
+    background-color: $success;
+    border: solid 1px $success;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: $transitionEaseIn;
+    &:hover {
+        color: $white !important;
+        background-color: transparent;
+        border: solid 1px $white;
+        outline: 0;
+    }
+    &:focus {
+        outline: none;
+    }
+}
+
+// PLAYLIST IMGS
+.playlist-img {
+    display: inline-block;
+    width: 85%;
+    transition: $transitionEaseIn;
+    &:hover {
+        transition: $transitionEaseIn;
+        opacity: 0.8;
+    }
+    @include for-sm-only {
+        width: 100%;
+    }
+    @include for-phone-only {
+        width: 100%;
+    }
+    @include for-tablet-portrait-up {
+        display: inline-block;
+        width: 95%;
+    }
+    @include for-desktop-up {
+        width: 90%;
+    }
+}

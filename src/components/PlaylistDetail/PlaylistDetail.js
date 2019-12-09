@@ -1,14 +1,16 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
-import { getPlaylist, getAudioFeaturesForTracks } from '../../app/spotify';
-import { catchErrors, setPlaylistName } from '../../app/helpers';
+import { getPlaylist, getAudioFeaturesForTracks } from 'app/spotify';
+import { catchErrors, setPlaylistName } from 'app/helpers';
 
-import TrackItem from '../TrackItem/TrackItem';
+import TrackItem from 'components/TrackItem/TrackItem';
 
-import Loader from '../Loader/Loader';
+import Loader from 'components/Loader/Loader';
 
-export default class Playlist extends Component {
+import './PlaylistDetail.scss';
+
+export default class PlaylistDetail extends Component {
   state = {
     playlist: null,
     tracks: null,

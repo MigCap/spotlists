@@ -1,10 +1,13 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
-import { getAlbum } from '../../app/spotify';
+import { getAlbum } from 'app/spotify';
 import { catchErrors, formatDuration, formatString } from '../../app/helpers';
 
-import Loader from '../Loader/Loader';
+import Loader from 'components/Loader/Loader';
+
+import './Album.scss';
+
 class Album extends Component {
   state = {
     album: null

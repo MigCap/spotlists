@@ -5,11 +5,13 @@ import {
   getTopTracksShort,
   getTopTracksMedium,
   getTopTracksLong
-} from '../../app/spotify';
-import { catchErrors, formatDuration } from '../../app/helpers';
+} from 'app/spotify';
+import { catchErrors, formatDuration } from 'app/helpers';
 
-import { IconMusic } from '../../assets/icons';
-import Loader from '../../components/Loader/Loader';
+import { IconMusic } from 'assets/icons';
+import Loader from 'components/Loader/Loader';
+
+import './TopTracks.scss';
 
 class TopTracks extends Component {
   state = {

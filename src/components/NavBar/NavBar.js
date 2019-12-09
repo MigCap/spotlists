@@ -9,7 +9,10 @@ import {
   IconMicrophone,
   IconPlaylist,
   IconMusic
-} from '../../assets/icons';
+} from 'assets/icons';
+
+import './NavBar.scss';
+
 class NavBar extends Component {
   render() {
     return (

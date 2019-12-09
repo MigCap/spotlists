@@ -1,0 +1,9 @@
+@import 'src/styles/shared/variables';
+@import 'src/styles/shared/mixins';
+.track-item-img {
+    transition: $transitionEaseIn;
+    &:hover {
+        transition: $transitionEaseIn;
+        opacity: 0.8;
+    }
+}

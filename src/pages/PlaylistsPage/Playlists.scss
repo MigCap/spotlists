@@ -1,0 +1,47 @@
+@import 'src/styles/shared/variables';
+@import 'src/styles/shared/mixins';
+// Playlists
+div.app-playlists {
+    text-align: center;
+    padding-bottom: 80px;
+    overflow: hidden;
+    @include for-tablet-landscape-up {
+        padding: 20px 0;
+        margin-left: 90px;
+    }
+}
+
+.playlists-container {
+    width: 100%;
+    max-width: 100vw;
+    overflow: hidden;
+}
+
+.playlists-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 1.5em;
+    @include for-phone-only {
+        grid-gap: 1.3em;
+    }
+}
+
+.playlists-imgs {
+    width: 90%;
+    height: auto;
+    &:hover {
+        transition: $transitionEaseIn;
+        opacity: 0.5;
+    }
+    @include for-tablet-portrait-up {
+        display: inline-block;
+        width: 95%;
+    }
+    @include for-desktop-up {
+        width: 90%;
+    }
+}
+
+.playlists-titles {
+    font-size: 1.2em;
+}

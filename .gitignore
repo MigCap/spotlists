@@ -26,6 +26,4 @@ yarn-error.log*
 
 #mine
 /src/app/fake-data/*
-**/*.scss
-**/src/styles/*.css
 .env
