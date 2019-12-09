@@ -9,7 +9,7 @@ import {
   IconMicrophone,
   IconPlaylist,
   IconMusic
-} from '../../assets/icons';
+} from '../icons';
 class NavBar extends Component {
   render() {
     return (
