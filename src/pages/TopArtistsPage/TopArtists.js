@@ -94,7 +94,7 @@ class TopArtists extends Component {
                         alt={name}
                       />
                     ) : (
-                      <div className="icon-music">
+                      <div className="icon-music d-block ml-auto mr-5">
                         <IconMusic />
                       </div>
                     )}

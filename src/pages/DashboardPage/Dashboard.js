@@ -34,9 +34,10 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    if (token) {
-      catchErrors(this.getData());
-      this.fetchPlaylists(token);
+    const accessToken = token;
+    if (accessToken) {
+      const resolveUser = Promise.resolve(catchErrors(this.getUserInformation()))
+      const whenUserInfo = resolveUser.then(() => this.fetchPlaylists(accessToken))
     }
 
     if (!token || this.state.fetchError) {
@@ -44,7 +45,7 @@ class Dashboard extends Component {
     }
   }
 
-  async getData() {
+  async getUserInformation() {
     const { user } = await getUserInfo();
     this.setState({
       user: {
@@ -70,20 +71,21 @@ class Dashboard extends Component {
         } else {
           let playlists = playlistData.items;
           let trackDataPromises = playlists.map(playlist => {
-            let responsePromise = fetch(playlist.tracks.href, {
-              headers: { Authorization: 'Bearer ' + accessToken }
-            });
-            let trackDataPromise = responsePromise.then(response =>
-              response.json()
-            );
-            return trackDataPromise;
+            if (playlist.owner.id === this.state.user.name) {
+              let responsePromise = fetch(playlist.tracks.href, {
+                headers: { Authorization: 'Bearer ' + accessToken }
+              });
+              let trackDataPromise = responsePromise.then(response => response.json());
+              return trackDataPromise;
+            }
           });
 
           let allTracksDataPromises = Promise.all(trackDataPromises);
 
           let playlistsPromise = allTracksDataPromises.then(trackDatas => {
             trackDatas.forEach((trackData, i) => {
-              playlists[i].trackDatas = trackData.items
+              if (trackData !== undefined) {
+                playlists[i].trackDatas = trackData.items
                 .map(item => item.track)
                 .map(trackData => ({
                   artistName: trackData.artists[0].name,
@@ -92,6 +94,7 @@ class Dashboard extends Component {
                   trackName: trackData.name,
                   duration: trackData.duration_ms / 1000
                 }));
+              }
             });
             return playlists;
           });
@@ -100,13 +103,7 @@ class Dashboard extends Component {
       })
       .then(playlists => {
         if (playlists && playlists.length >= 0) {
-          let ownerPlaylists = [];
-          playlists.map(playlist => {
-            if (playlist.owner.id === this.state.user.name) {
-              ownerPlaylists.push(playlist);
-            }
-            return ownerPlaylists;
-          });
+          const ownerPlaylists = playlists.filter(playlist => (playlist.owner.id === this.state.user.name))
           this.setState({
             playlists: ownerPlaylists.map(item => {
               return {
