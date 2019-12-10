@@ -36,7 +36,9 @@ class Dashboard extends Component {
   componentDidMount() {
     const accessToken = token;
     if (accessToken) {
+      // First resolve User Info
       const resolveUser = Promise.resolve(catchErrors(this.getUserInformation()))
+      // Then Fetch User Playlists
       const whenUserInfo = resolveUser.then(() => this.fetchPlaylists(accessToken))
     }
 
