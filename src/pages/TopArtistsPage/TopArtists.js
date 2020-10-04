@@ -1,30 +1,30 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 import {
   getTopArtistsShort,
   getTopArtistsMedium,
-  getTopArtistsLong
-} from 'app/spotify';
-import { catchErrors, formatWithCommas } from 'app/helpers';
+  getTopArtistsLong,
+} from "app/spotify";
+import { catchErrors, formatWithCommas } from "app/helpers";
 
-import { IconMusic } from 'assets/icons';
+import { IconMusic } from "assets/icons";
 
-import Loader from 'components/Loader/Loader';
+import Loader from "components/Loader/Loader";
 
-import './TopArtists.scss';
+import "./TopArtists.scss";
 
 class TopArtists extends Component {
   state = {
     topArtists: null,
-    activeRange: 'long',
-    isFetching: true
+    activeRange: "long",
+    isFetching: true,
   };
 
   apiCalls = {
     long: getTopArtistsLong(),
     medium: getTopArtistsMedium(),
-    short: getTopArtistsShort()
+    short: getTopArtistsShort(),
   };
 
   componentDidMount() {
@@ -41,38 +41,41 @@ class TopArtists extends Component {
     this.setState({ topArtists: data.items, activeRange: range });
   }
 
-  setActiveRange = range => catchErrors(this.changeRange(range));
+  setActiveRange = (range) => catchErrors(this.changeRange(range));
 
   render() {
     const { topArtists, activeRange, isFetching } = this.state;
     return (
-      <div className="app-playlists">
+      <div className="app-playlists mx-auto">
         <h2 className="title-font text-white text-center py-4 pb-4">
           Top Artists
         </h2>
 
-        <div className="tracks-range text-center text-md-right pb-3 px-4">
+        <div className="tracks-range text-center pb-3 px-4">
           <button
             className={
-              activeRange === 'long' ? 'buttons-range-active' : 'buttons-range'
+              activeRange === "long" ? "buttons-range-active" : "buttons-range"
             }
-            onClick={() => this.setActiveRange('long')}>
+            onClick={() => this.setActiveRange("long")}
+          >
             All Time
           </button>
           <button
             className={
-              activeRange === 'medium'
-                ? 'buttons-range-active'
-                : 'buttons-range'
+              activeRange === "medium"
+                ? "buttons-range-active"
+                : "buttons-range"
             }
-            onClick={() => this.setActiveRange('medium')}>
+            onClick={() => this.setActiveRange("medium")}
+          >
             <span>Last 6 months</span>
           </button>
           <button
             className={
-              activeRange === 'short' ? 'buttons-range-active' : 'buttons-range'
+              activeRange === "short" ? "buttons-range-active" : "buttons-range"
             }
-            onClick={() => this.setActiveRange('short')}>
+            onClick={() => this.setActiveRange("short")}
+          >
             <span>Last 4 weeks</span>
           </button>
         </div>
@@ -82,11 +85,13 @@ class TopArtists extends Component {
             return (
               <div
                 className="row align-items-center justify-content-end no-gutters pl-4"
-                key={i}>
+                key={i}
+              >
                 <div className="col-3 col-sm-3">
                   <Link
                     className="playlist-img-container pl-2"
-                    to={`/artist/${id}`}>
+                    to={`/artist/${id}`}
+                  >
                     {images.length ? (
                       <img
                         className="rounded-circle artists-img d-block ml-auto mr-4"
@@ -106,8 +111,9 @@ class TopArtists extends Component {
                       className="text-white"
                       to={{
                         pathname: `/artist/${id}`,
-                        state: { artistName: name }
-                      }}>
+                        state: { artistName: name },
+                      }}
+                    >
                       {name}&nbsp;&nbsp;
                     </Link>
                   </p>
@@ -121,12 +127,12 @@ class TopArtists extends Component {
                             </span>
                           );
                         } else {
-                          return '';
+                          return "";
                         }
                       })}
                   </p>
                   <p className="text-muted small-font m-0 pt-1">
-                    {' '}
+                    {" "}
                     {formatWithCommas(followers.total)} followers
                   </p>
                 </div>

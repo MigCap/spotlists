@@ -1,19 +1,19 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
-import { getPlaylists } from 'app/spotify';
-import { catchErrors, setPlaylistName } from 'app/helpers';
+import { getPlaylists } from "app/spotify";
+import { catchErrors, setPlaylistName } from "app/helpers";
 
-import { IconMusic } from 'assets/icons';
+import { IconMusic } from "assets/icons";
 
-import Loader from 'components/Loader/Loader';
+import Loader from "components/Loader/Loader";
 
-import './Playlists.scss';
+import "./Playlists.scss";
 
 class Playlists extends Component {
   state = {
     playlists: null,
-    isFetching: true
+    isFetching: true,
   };
 
   componentDidMount() {
@@ -29,7 +29,7 @@ class Playlists extends Component {
     const { playlists, isFetching } = this.state;
 
     return (
-      <div className="app-playlists px-3">
+      <div className="px-3">
         <h2 className="title-font text-white text-center py-4 pb-4">
           Your Playlists
         </h2>
@@ -40,7 +40,8 @@ class Playlists extends Component {
                 <div className="playlists-container" key={i}>
                   <Link
                     className="playlist-img-container"
-                    to={`/playlists/${id}`}>
+                    to={`/playlists/${id}`}
+                  >
                     {images.length ? (
                       <img
                         className="playlists-imgs"
@@ -59,7 +60,8 @@ class Playlists extends Component {
                   <div className="pt-2">
                     <Link
                       className="playlist-name d-inline-block text-white m-0 p-0"
-                      to={`/playlists/${id}`}>
+                      to={`/playlists/${id}`}
+                    >
                       {setPlaylistName(name)}
                     </Link>
                     <p className="playlist-totaltracks text-muted small-font m-0 p-0">

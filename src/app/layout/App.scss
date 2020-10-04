@@ -1,2 +1,17 @@
 // Custom.scss
-@import '../../styles/index.scss';
+@import "../../styles/index.scss";
+
+.main-wrapper {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: $navHeightTablet;
+
+  @include for-tablet-landscape-up {
+    width: calc(70% - 100px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

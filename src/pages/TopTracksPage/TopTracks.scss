@@ -1,22 +1,23 @@
-@import 'src/styles/shared/variables';
-@import 'src/styles/shared/mixins';
+@import "src/styles/shared/variables";
+@import "src/styles/shared/mixins";
+
 .album-track-img {
-    display: inline-block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: $transitionEaseIn;
+  &:hover {
     transition: $transitionEaseIn;
-    &:hover {
-        transition: $transitionEaseIn;
-        opacity: 0.8;
-    }
-    @include for-phone-only {
-        display: inline-block;
-    }
-    @include for-tablet-portrait-up {
-        display: inline-block;
-    }
-    @include for-desktop-up {
-        width: 80%;
-    }
+    opacity: 0.8;
+  }
+  @include for-phone-only {
+    display: inline-block;
+  }
+  @include for-tablet-portrait-up {
+    display: inline-block;
+  }
+  @include for-desktop-up {
+    width: 80%;
+  }
 }

@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+
+import "./SearchFilter.scss";
 
 export default class SearchFilter extends Component {
   render() {
@@ -10,7 +12,7 @@ export default class SearchFilter extends Component {
           className="form-control form-control-sm mx-auto pt-1 pb-2 round-corner"
           type="text"
           placeholder="Search Playlist or Song"
-          onKeyUp={event => onTextChange(event.target.value)}
+          onKeyUp={(event) => onTextChange(event.target.value)}
         />
       </div>
     );
