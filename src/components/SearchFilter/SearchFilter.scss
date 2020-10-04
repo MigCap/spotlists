@@ -1,0 +1,41 @@
+@import "src/styles/shared/variables";
+@import "src/styles/shared/mixins";
+
+// Search Field
+.sticky-search {
+  height: 70px;
+  z-index: 98;
+  background-color: $dark;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+input.round-corner {
+  border-radius: 50px;
+  border: solid 1px $white;
+  max-width: 75%;
+  background: $dark;
+  background-color: $dark;
+  @include for-phone-only {
+    max-width: 75%;
+  }
+  @include for-tablet-portrait-up {
+    max-width: 50%;
+  }
+  @include for-tablet-landscape-up {
+    max-width: 40%;
+  }
+  @include for-desktop-up {
+    max-width: 30%;
+  }
+}
+
+input[type="text"]::placeholder {
+  /* Firefox, Chrome, Opera */
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  font-weight: 500;
+  color: $white;
+}

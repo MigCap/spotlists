@@ -1,17 +1,20 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
-import { setPlaylistName, getTrackMinutesSeconds } from '../../app/helpers';
+import { setPlaylistName, getTrackMinutesSeconds } from "../../app/helpers";
+
+import "./PlaylistCard.scss";
 
 class PlaylistCard extends Component {
   render() {
     const { playlist } = this.props;
     return (
-      <div className="row justify-content-center no-gutters pb-3 px-md-5">
+      <div className="row justify-content-center no-gutters pb-3">
         <div className="co-12 col-sm-2 align-self-start pt-sm-3 pl-sm-4">
           <Link
             to={`/playlists/${playlist.id}`}
-            alt={`Spotify Playlist: ${setPlaylistName(playlist.name)}`}>
+            alt={`Spotify Playlist: ${setPlaylistName(playlist.name)}`}
+          >
             <img
               className="playlist-img img-flex"
               alt={`Spotify Playlist: ${setPlaylistName(playlist.name)}`}
@@ -25,8 +28,9 @@ class PlaylistCard extends Component {
             <Link
               to={`/playlists/${playlist.id}`}
               alt={`Spotify Playlist: ${setPlaylistName(playlist.name)}`}
-              className="text-white font-weight-bold">
-              <p className="dasboard-playlist-title title-font m-0 p-0">
+              className="text-white font-weight-bold"
+            >
+              <p className="playlist-title title-font m-0 p-0">
                 {setPlaylistName(playlist.name)}&nbsp;&nbsp;&nbsp;
                 <span className="text-muted small-font">
                   {`${playlist.totalTracks} Tracks`}
@@ -48,10 +52,11 @@ class PlaylistCard extends Component {
                         className="text-white"
                         to={{
                           pathname: `/artist/${song.artistId}`,
-                          state: { artistName: song.artistName }
-                        }}>
+                          state: { artistName: song.artistName },
+                        }}
+                      >
                         {song.artistName}
-                      </Link>{' '}
+                      </Link>{" "}
                       - {song.albumTitle}
                     </p>
                   </div>

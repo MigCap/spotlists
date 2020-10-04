@@ -1,0 +1,21 @@
+@import "src/styles/shared/variables";
+@import "src/styles/shared/mixins";
+
+.playlist-title {
+  font-size: 1.5em;
+  @include for-phone-only {
+    font-size: 1.5em;
+  }
+  @include for-tablet-portrait-up {
+    font-size: 1.6em;
+  }
+  @include for-tablet-landscape-up {
+    font-size: 1.6em;
+  }
+  @include for-desktop-up {
+    font-size: 1.6em;
+  }
+  span {
+    font-size: 0.5em;
+  }
+}

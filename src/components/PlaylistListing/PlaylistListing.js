@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 
-import PlaylistCard from '../PlaylistCard/PlaylistCard';
+import PlaylistCard from "../PlaylistCard/PlaylistCard";
 
 export default function PlaylistListing(props) {
   const { playlistToRender } = props;
 
   return (
-    <div className="playlists-container pt-5">
+    <div className="playlists-container pt-5 mx-auto">
       {playlistToRender && playlistToRender.length !== 0 ? (
         playlistToRender.map((playlist, index) => (
           <PlaylistCard playlist={playlist} key={index} />

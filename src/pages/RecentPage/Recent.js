@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import { getRecentlyPlayed } from '../../app/spotify';
-import { catchErrors } from '../../app/helpers';
+import { getRecentlyPlayed } from "../../app/spotify";
+import { catchErrors } from "../../app/helpers";
 
-import TrackItem from '../../components/TrackItem/TrackItem';
+import TrackItem from "../../components/TrackItem/TrackItem";
 
-import Loader from '../../components/Loader/Loader';
+import Loader from "../../components/Loader/Loader";
 
 class Recent extends Component {
   state = {
-    recentlyPlayed: null
+    recentlyPlayed: null,
   };
 
   componentDidMount() {
@@ -29,7 +29,7 @@ class Recent extends Component {
         <h2 className="title-font text-white text-center py-4 pb-5">
           Recent Activity
         </h2>
-        <div className="recently-played-container pl-2 pl-md-4">
+        <div className="recently-played-container">
           <ul className="list-unstyled">
             {recentlyPlayed ? (
               recentlyPlayed.items.map(({ track }, i) => (
